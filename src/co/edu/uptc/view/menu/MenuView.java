@@ -144,7 +144,7 @@ public class MenuView extends JFrame {
 
     private void createLeftKeyButton( ) {
         selectLeftKeyButton = new JButton("OK");
-        selectLeftKeyButton.setBackground(new Color(45, 227, 51));
+        selectLeftKeyButton.setBackground(Color.yellow);
         selectLeftKeyButton.setBorderPainted(false);
         selectLeftKeyButton.setFocusPainted(false);
         selectLeftKeyButton.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10));
