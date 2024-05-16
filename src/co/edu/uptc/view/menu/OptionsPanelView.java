@@ -29,7 +29,6 @@ public class OptionsPanelView extends JPanel {
 
     public void setManagerView(ManagerView managerView) {
         this.managerView = managerView;
-        System.out.println(managerView);
     }
 
     @Override
