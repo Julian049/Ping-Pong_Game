@@ -2,7 +2,6 @@ package co.edu.uptc.model;
 
 import co.edu.uptc.presenter.ContractPlay;
 
-import java.util.concurrent.CopyOnWriteArrayList;
 
 
 public class ManagerModel implements ContractPlay.Model {
