@@ -1,7 +1,7 @@
-package co.edu.uptc.view.menu;
+package co.edu.uptc.view.client.menu;
 
 import co.edu.uptc.util.ViewPropertiesUtil;
-import co.edu.uptc.view.ManagerView;
+import co.edu.uptc.view.client.ManagerView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,8 +9,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.Serializable;
 
-public class OptionsPanelView extends JPanel {
+public class OptionsPanelView extends JPanel implements Serializable {
 
     private JLabel settingsLabel;
     private JLabel selectRightKeyLabel;

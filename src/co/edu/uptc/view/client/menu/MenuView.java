@@ -1,12 +1,13 @@
-package co.edu.uptc.view.menu;
+package co.edu.uptc.view.client.menu;
 
 import co.edu.uptc.util.ViewPropertiesUtil;
-import co.edu.uptc.view.ManagerView;
+import co.edu.uptc.view.client.ManagerView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 
-public class MenuView extends JFrame {
+public class MenuView extends JFrame implements Serializable {
 
     private JLabel titleGameLabel;
     private JButton startGameButton;

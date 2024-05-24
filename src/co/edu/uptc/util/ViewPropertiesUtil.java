@@ -47,4 +47,5 @@ public class ViewPropertiesUtil {
     public static Color TEXT_COLOR = new Color(35, 33, 60);
     public static Color TEXT_COLOR2 = new Color(0,0,0);
     public static String BACK_BUTTON = propertiesText.getProperty("backButton");
+    public static int PAINT_SPEED_THREAD = Integer.parseInt(propertiesConfig.getProperty("paintSpeedThread"));
 }

@@ -15,4 +15,6 @@ public class ModelPropertiesUtil {
         }
     }
 
+    public static int PORT = Integer.parseInt(properties.getProperty("port"));
+    public static String HOST = properties.getProperty("host");
 }

@@ -1,4 +1,4 @@
-package co.edu.uptc.view.menu;
+package co.edu.uptc.view.client.menu;
 
 import co.edu.uptc.util.ViewPropertiesUtil;
 
