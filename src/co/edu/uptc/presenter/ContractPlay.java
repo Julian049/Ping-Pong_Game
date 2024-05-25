@@ -12,10 +12,14 @@ public interface ContractPlay {
 
     interface ModelClient {
         void setPresenter(PresenterClient presenter);
-        void sendKey(char keyCode);
+        void sendKey(int keyCode, int numberPLayer, int totalPlayers);
         void run();
         void startBall();
         BallPojo getBallPojo();
+        void updatePLayer(PlayerPojo newPLayer);
+        public PlayerPojo getPlayerPojo();
+        void updateCountPoints();
+        void stopBall(boolean stop);
     }
 
     interface View {
@@ -23,6 +27,8 @@ public interface ContractPlay {
         void initMenu();
         void startGame();
         void setPlayerPojo(PlayerPojo player);
+        void updatePlayer2Points(int player2Points);
+        void updatePlayer1Points(int player1Points);
     }
 
     interface PresenterServer {
@@ -37,12 +43,14 @@ public interface ContractPlay {
         void setClient(Client client);
         void startClient();
         void updatePlayers(PlayerPojo playerPojo);
-        void sendKey(char keyCode);
+        void sendKey(int keyCode);
         void startBall();
         BallPojo getBallPojo();
         RacketPojo getRacketPojo1();
         RacketPojo getRacketPojo2();
         PlayerPojo getPlayerPojo();
+        void updatePlayer1Points(int player1Points);
+        void updatePlayer2Points(int player2Points);
     }
 
     interface Server {

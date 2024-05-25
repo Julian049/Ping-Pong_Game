@@ -97,10 +97,8 @@ public class PlayerView extends JPanel {
         g.setColor(Color.BLACK);
         g.fillRect(racketPojo1.getPoint().x, racketPojo1.getPoint().y, racketPojo1.getWidth(), racketPojo1.getHeight());
 
-        int x = (playerPojo.getTotalPlayers() * 500) - 30;
-        System.out.println("Pinta la raqueta 2 en x: " + x + " y: " + racketPojo2.getPoint().y);
         g.setColor(Color.BLACK);
-        g.fillRect(x, racketPojo2.getPoint().y, racketPojo2.getWidth(), racketPojo2.getHeight());
+        g.fillRect(racketPojo2.getPoint().x, racketPojo2.getPoint().y, racketPojo2.getWidth(), racketPojo2.getHeight());
     }
 
     private void paintBall(Graphics g) {
@@ -130,10 +128,7 @@ public class PlayerView extends JPanel {
 //                    managerView.presenter.shoot();
 //                }
 
-                managerView.presenter.sendKey(e.getKeyChar());
-                if ((int)e.getKeyChar() == 112) {
-                    managerView.presenter.startBall();
-                }
+                managerView.presenter.sendKey(e.getKeyCode());
             }
 
             @Override

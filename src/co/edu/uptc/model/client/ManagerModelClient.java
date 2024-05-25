@@ -12,6 +12,12 @@ public class ManagerModelClient implements ContractPlay.ModelClient{
     private ClientSocket clientSocket = new ClientSocket();
     private ManagerBallModel ballModel = new ManagerBallModel();
     private PlayerPojo playerPojo;
+    private boolean firstUpdate = false;
+    private boolean ballIsMoving = false;
+
+    public ManagerModelClient() {
+        ballModel.setManagerModelClient(this);
+    }
 
     @Override
     public void setPresenter(ContractPlay.PresenterClient presenter) {
@@ -19,8 +25,14 @@ public class ManagerModelClient implements ContractPlay.ModelClient{
     }
 
     @Override
-    public void sendKey(char keyCode) {
-        InfoClient info = new InfoClient(keyCode);
+    public void sendKey(int keyCode, int numberPLayer, int totalPlayers) {
+        InfoClient info = new InfoClient(keyCode, numberPLayer, totalPlayers);
+        clientSocket.write(info);
+    }
+
+    @Override
+    public void stopBall(boolean stop){
+        InfoClient info = new InfoClient(stop);
         clientSocket.write(info);
     }
 
@@ -39,5 +51,48 @@ public class ManagerModelClient implements ContractPlay.ModelClient{
     @Override
     public BallPojo getBallPojo() {
         return ballModel.getBallPojo();
+    }
+
+    @Override
+    public void updatePLayer(PlayerPojo newPLayer) {
+        if (!firstUpdate) {
+            this.playerPojo = newPLayer;
+            firstUpdate = true;
+            System.out.println("First update");
+        }else {
+            this.playerPojo.setRacketPojo1(newPLayer.getRacketPojo1());
+            this.playerPojo.setRacketPojo2(newPLayer.getRacketPojo2());
+            this.playerPojo.setTotalPlayers(newPLayer.getTotalPlayers());
+            this.playerPojo.setStartMoveBall(newPLayer.getStartMoveBall());
+            this.playerPojo.setPlayer1StartGame(newPLayer.getPlayer1StartGame());
+            this.playerPojo.setPlayer2StartGame(newPLayer.getPlayer2StartGame());
+        }
+        if (playerPojo.getStartMoveBall() && !ballIsMoving) {
+            startBall();
+            ballModel.initCollision();
+            ballIsMoving = true;
+        }
+    }
+
+    @Override
+    public PlayerPojo getPlayerPojo() {
+        return playerPojo;
+    }
+
+    @Override
+    public void updateCountPoints() {
+        Thread thread = new Thread(() -> {
+            while (true) {
+                int player1Points = ballModel.getPlayer1Points();
+                int player2Points = ballModel.getPlayer2Points();
+                presenter.updatePlayer1Points(player1Points);
+                presenter.updatePlayer2Points(player2Points);
+            }
+        });
+        thread.start();
+    }
+
+    public void setBallIsMoving(boolean ballIsMoving) {
+        this.ballIsMoving = ballIsMoving;
     }
 }

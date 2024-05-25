@@ -33,8 +33,17 @@ public class ClientServerSocket {
                     try {
                         if (objectInputStream != null) {
                             InfoClient info = (InfoClient) objectInputStream.readObject();
-                            char code = info.getCode();
-                            serverSocket.moveRacket(code);
+                            int code = info.getCode();
+                            int numberOfPLayer = info.getNumberPlayer();
+                            int totalPlayers = info.getTotalPlayers();
+                            if(numberOfPLayer == 1 ){
+                                serverSocket.moveRacket1(code);
+                                serverSocket.player1StartGame(code);
+                            } else if (numberOfPLayer == totalPlayers) {
+                                serverSocket.moveRacket2(code);
+                                serverSocket.player2StartGame(code);
+                            }
+
                         }
                     } catch (IOException e) {
                         throw new RuntimeException(e);

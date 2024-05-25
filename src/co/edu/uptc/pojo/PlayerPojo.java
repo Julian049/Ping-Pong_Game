@@ -8,6 +8,9 @@ public class PlayerPojo implements Serializable {
     private boolean spectator = false;
     private int numberPlayer;
     private int totalPlayers;
+    private boolean player1StartGame = false;
+    private boolean player2StartGame = false;
+    private boolean startMoveBall = false;
 
     public RacketPojo getRacketPojo1() {
         return racketPojo1;
@@ -47,6 +50,30 @@ public class PlayerPojo implements Serializable {
 
     public void setTotalPlayers(int totalPlayers) {
         this.totalPlayers = totalPlayers;
+    }
+
+    public boolean getStartMoveBall() {
+        return startMoveBall;
+    }
+
+    public void setStartMoveBall(boolean startMoveBall) {
+        this.startMoveBall = startMoveBall;
+    }
+
+    public boolean getPlayer1StartGame() {
+        return player1StartGame;
+    }
+
+    public void setPlayer1StartGame(boolean player1StartGame) {
+        this.player1StartGame = player1StartGame;
+    }
+
+    public boolean getPlayer2StartGame() {
+        return player2StartGame;
+    }
+
+    public void setPlayer2StartGame(boolean player2StartGame) {
+        this.player2StartGame = player2StartGame;
     }
 
     @Override

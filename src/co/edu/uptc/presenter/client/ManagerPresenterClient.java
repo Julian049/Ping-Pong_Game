@@ -12,8 +12,6 @@ public class ManagerPresenterClient implements ContractPlay.PresenterClient {
     private ContractPlay.View view;
     private ContractPlay.ModelClient model;
     private ContractPlay.Client client;
-    private PlayerPojo playerPojo;
-    private boolean firstUpdate = false;
 
     @Override
     public void setModel(ContractPlay.ModelClient model) {
@@ -34,8 +32,9 @@ public class ManagerPresenterClient implements ContractPlay.PresenterClient {
     public void startClient() {
         makeMVP();
         model.run();
-        view.setPlayerPojo(playerPojo);
+        view.setPlayerPojo(model.getPlayerPojo());
         view.startGame();
+        model.updateCountPoints();
     }
 
     public void makeMVP() {
@@ -50,8 +49,8 @@ public class ManagerPresenterClient implements ContractPlay.PresenterClient {
     }
 
     @Override
-    public void sendKey(char keyCode) {
-        model.sendKey(keyCode);
+    public void sendKey(int keyCode) {
+        model.sendKey(keyCode, model.getPlayerPojo().getNumberPlayer(), model.getPlayerPojo().getTotalPlayers());
     }
 
     @Override
@@ -61,17 +60,10 @@ public class ManagerPresenterClient implements ContractPlay.PresenterClient {
 
     @Override
     public void updatePlayers(PlayerPojo newPLayer) {
-        if (!firstUpdate) {
-            this.playerPojo = newPLayer;
-            firstUpdate = true;
-            System.out.println("First update");
-        }else {
-            this.playerPojo.setRacketPojo1(newPLayer.getRacketPojo1());
-            this.playerPojo.setRacketPojo2(newPLayer.getRacketPojo2());
-            this.playerPojo.setTotalPlayers(newPLayer.getTotalPlayers());
-        }
-        view.setPlayerPojo(playerPojo);
+        model.updatePLayer(newPLayer);
+        view.setPlayerPojo(model.getPlayerPojo());
     }
+
     @Override
     public BallPojo getBallPojo() {
         return model.getBallPojo();
@@ -79,22 +71,32 @@ public class ManagerPresenterClient implements ContractPlay.PresenterClient {
 
     @Override
     public RacketPojo getRacketPojo1() {
-        if (playerPojo != null) {
-            return playerPojo.getRacketPojo1();
+        if (model.getPlayerPojo() != null) {
+            return model.getPlayerPojo().getRacketPojo1();
         }
         return new RacketPojo();
     }
 
     @Override
     public RacketPojo getRacketPojo2() {
-        if (playerPojo != null) {
-            return playerPojo.getRacketPojo2();
+        if (model.getPlayerPojo() != null) {
+            return model.getPlayerPojo().getRacketPojo2();
         }
         return new RacketPojo();
     }
 
     @Override
     public PlayerPojo getPlayerPojo() {
-        return playerPojo;
+        return model.getPlayerPojo();
+    }
+
+    @Override
+    public void updatePlayer1Points(int player1Points) {
+        view.updatePlayer1Points(player1Points);
+    }
+
+    @Override
+    public void updatePlayer2Points(int player2Points) {
+        view.updatePlayer2Points(player2Points);
     }
 }
