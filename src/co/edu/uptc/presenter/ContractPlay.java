@@ -25,7 +25,7 @@ public interface ContractPlay {
     interface View {
         void setPresenter(PresenterClient presenter);
         void initMenu();
-        void startGame();
+        void startGame(int codeStart);
         void setPlayerPojo(PlayerPojo player);
         void updatePlayer2Points(int player2Points);
         void updatePlayer1Points(int player1Points);

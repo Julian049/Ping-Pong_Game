@@ -1,7 +1,5 @@
 package co.edu.uptc.connection.server;
 
-import co.edu.uptc.model.DirectionEnum;
-import co.edu.uptc.pojo.BallPojo;
 import co.edu.uptc.pojo.PlayerPojo;
 import co.edu.uptc.pojo.RacketPojo;
 import co.edu.uptc.presenter.ContractPlay;
@@ -9,12 +7,8 @@ import co.edu.uptc.util.ModelPropertiesUtil;
 import co.edu.uptc.util.SleepUtil;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ServerSocket implements ContractPlay.Server {
@@ -40,7 +34,7 @@ public class ServerSocket implements ContractPlay.Server {
             serverSocket = new java.net.ServerSocket(ModelPropertiesUtil.PORT);
             System.out.println("Servidor iniciado");
             System.out.println("Esperando jugadores...");
-            while (!playerPojo.getStartMoveBall()) {
+            while ((!playerPojo.getPlayer1StartGame() && !playerPojo.getPlayer2StartGame())) {
                 Socket socket = serverSocket.accept();
                 numberPlayers++;
                 playerPojo.setNumberPlayer(numberPlayers);
@@ -58,9 +52,6 @@ public class ServerSocket implements ContractPlay.Server {
     }
 
     public void sendAllClients() {
-        if (playerPojo.getPlayer1StartGame() && playerPojo.getPlayer2StartGame()) {
-            playerPojo.setStartMoveBall(true);
-        }
         for (ClientServerSocket server : clients) {
             server.write(playerPojo);
         }
@@ -96,21 +87,12 @@ public class ServerSocket implements ContractPlay.Server {
         thread.start();
     }
 
-    private boolean setSpectator() {
-        boolean isSpectator = true;
-        if (clients.size() == 1 || clients.isEmpty()) {
-            isSpectator = false;
-        }
-        return isSpectator;
-    }
-
-    private PlayerPojo createPlayer() {
+    private void createPlayer() {
         playerPojo = new PlayerPojo();
         playerPojo.setNumberPlayer(numberPlayers);
         playerPojo.setTotalPlayers(numberPlayers + 1);
         playerPojo.setRacketPojo1(assignRacket1(playerPojo));
         playerPojo.setRacketPojo2(assignRacket2(playerPojo));
-        return playerPojo;
     }
 
     private RacketPojo assignRacket1(PlayerPojo playerPojo) {
@@ -135,13 +117,13 @@ public class ServerSocket implements ContractPlay.Server {
     }
 
     public void player1StartGame(int keyCode) {
-        if (keyCode == 80) {
+        if (keyCode == 16) {
             playerPojo.setPlayer1StartGame(true);
         }
     }
 
     public void player2StartGame(int keyCode) {
-        if (keyCode == 80) {
+        if (keyCode == 16) {
             playerPojo.setPlayer2StartGame(true);
         }
     }

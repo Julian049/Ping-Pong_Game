@@ -63,7 +63,6 @@ public class ManagerModelClient implements ContractPlay.ModelClient {
             this.playerPojo.setRacketPojo1(newPLayer.getRacketPojo1());
             this.playerPojo.setRacketPojo2(newPLayer.getRacketPojo2());
             this.playerPojo.setTotalPlayers(newPLayer.getTotalPlayers());
-            this.playerPojo.setStartMoveBall(newPLayer.getStartMoveBall());
             this.playerPojo.setPlayer1StartGame(newPLayer.getPlayer1StartGame());
             this.playerPojo.setPlayer2StartGame(newPLayer.getPlayer2StartGame());
             this.playerPojo.setPlayer1LeftKey(newPLayer.getPlayer1LeftKey());
@@ -71,7 +70,7 @@ public class ManagerModelClient implements ContractPlay.ModelClient {
             this.playerPojo.setPlayer2LeftKey(newPLayer.getPlayer2LeftKey());
             this.playerPojo.setPlayer2RightKey(newPLayer.getPlayer2RightKey());
         }
-        if (playerPojo.getStartMoveBall() && !ballIsMoving) {
+        if ((playerPojo.getPlayer1StartGame() && playerPojo.getPlayer2StartGame()) && !ballIsMoving) {
             startBall();
             ballModel.initCollision();
             ballIsMoving = true;

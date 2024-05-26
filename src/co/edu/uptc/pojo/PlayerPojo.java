@@ -9,7 +9,6 @@ public class PlayerPojo implements Serializable {
     private int totalPlayers;
     private boolean player1StartGame = false;
     private boolean player2StartGame = false;
-    private boolean startMoveBall = false;
     private int player1RightKey;
     private int player1LeftKey;
     private int player2RightKey;
@@ -46,15 +45,6 @@ public class PlayerPojo implements Serializable {
     public void setTotalPlayers(int totalPlayers) {
         this.totalPlayers = totalPlayers;
     }
-
-    public boolean getStartMoveBall() {
-        return startMoveBall;
-    }
-
-    public void setStartMoveBall(boolean startMoveBall) {
-        this.startMoveBall = startMoveBall;
-    }
-
     public boolean getPlayer1StartGame() {
         return player1StartGame;
     }

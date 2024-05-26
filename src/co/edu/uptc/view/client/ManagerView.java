@@ -52,9 +52,10 @@ public class ManagerView extends JFrame implements ContractPlay.View {
     }
 
     @Override
-    public void startGame() {
+    public void startGame(int codeStart) {
         managePlayerView = new ManagerPlayerView(this, ballPojo);
         managePlayerView.run();
+        presenter.sendKey(codeStart);
     }
 
     @Override

@@ -77,7 +77,7 @@ public class MenuView extends JFrame implements Serializable {
                 JOptionPane.showMessageDialog(null, "Select a key","ERROR", JOptionPane.ERROR_MESSAGE);
             }else {
                 close();
-                managerView.startGame();
+                managerView.startGame(e.getModifiers());
             }
         });
     }
