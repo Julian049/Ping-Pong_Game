@@ -20,8 +20,8 @@ public class OptionsPanelView extends JPanel implements Serializable {
     private JTextArea selectLeftKeyTextArea;
     private JLabel noteLabel;
     private JButton backButton;
-    private char rightKey;
-    private char leftKey;
+    private int rightKey;
+    private int leftKey;
     private ManagerView managerView = new ManagerView();
 
     public OptionsPanelView() {
@@ -158,7 +158,12 @@ public class OptionsPanelView extends JPanel implements Serializable {
         backButton.setFocusPainted(false);
         backButton.setBorderPainted(false);
         backButton.addActionListener(e -> {
-            managerView.backToMenu();
+            if (leftKey == 0 || rightKey == 0){
+                JOptionPane.showMessageDialog(null, "Select a key","ERROR", JOptionPane.ERROR_MESSAGE);
+            }else {
+                managerView.backToMenu();
+                managerView.presenter.sendPlayerKeys(leftKey,rightKey);
+            }
         });
     }
 
@@ -217,11 +222,11 @@ public class OptionsPanelView extends JPanel implements Serializable {
         this.setVisible(false);
     }
 
-    public char getRightKey() {
+    public int getRightKey() {
         return rightKey;
     }
 
-    public char getLeftKey() {
+    public int getLeftKey() {
         return leftKey;
     }
 }

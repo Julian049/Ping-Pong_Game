@@ -6,7 +6,8 @@ public class InfoClient implements Serializable {
     private int code;
     private int numberPlayer;
     private int totalPlayers;
-    private boolean stop;
+    private int left;
+    private int right;
 
     public InfoClient(int code, int numberPlayer, int totalPlayers) {
         this.code = code;
@@ -14,8 +15,11 @@ public class InfoClient implements Serializable {
         this.totalPlayers = totalPlayers;
     }
 
-    public InfoClient(boolean stop) {
-        this.stop = stop;
+    public InfoClient(int numberPlayer, int totalPlayers,int left, int right) {
+        this.numberPlayer = numberPlayer;
+        this.totalPlayers = totalPlayers;
+        this.left = left;
+        this.right = right;
     }
 
     public int getCode() {
@@ -42,11 +46,11 @@ public class InfoClient implements Serializable {
         this.totalPlayers = totalPlayers;
     }
 
-    public boolean getStop() {
-        return stop;
+    public int getLeft() {
+        return left;
     }
 
-    public void setStop(boolean stop) {
-        this.stop = stop;
+    public int getRight() {
+        return right;
     }
 }

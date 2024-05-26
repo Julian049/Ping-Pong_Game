@@ -19,7 +19,7 @@ public interface ContractPlay {
         void updatePLayer(PlayerPojo newPLayer);
         public PlayerPojo getPlayerPojo();
         void updateCountPoints();
-        void stopBall(boolean stop);
+        void playerSetKeys(int numberOfPlayer,int totalPlayers,int left, int right);
     }
 
     interface View {
@@ -51,6 +51,7 @@ public interface ContractPlay {
         PlayerPojo getPlayerPojo();
         void updatePlayer1Points(int player1Points);
         void updatePlayer2Points(int player2Points);
+        void sendPlayerKeys(int leftKey,int rightKey);
     }
 
     interface Server {

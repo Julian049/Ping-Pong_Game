@@ -21,7 +21,6 @@ public class ServerSocket implements ContractPlay.Server {
     private ContractPlay.PresenterServer presenter;
     private java.net.ServerSocket serverSocket;
     private CopyOnWriteArrayList<ClientServerSocket> clients = new CopyOnWriteArrayList<>();
-    private boolean isGameStarted = false;
     private PlayerPojo playerPojo;
     private int numberPlayers = 0;
 
@@ -41,12 +40,11 @@ public class ServerSocket implements ContractPlay.Server {
             serverSocket = new java.net.ServerSocket(ModelPropertiesUtil.PORT);
             System.out.println("Servidor iniciado");
             System.out.println("Esperando jugadores...");
-            while (!isGameStarted) {
+            while (!playerPojo.getStartMoveBall()) {
                 Socket socket = serverSocket.accept();
                 numberPlayers++;
                 playerPojo.setNumberPlayer(numberPlayers);
                 playerPojo.setTotalPlayers(numberPlayers);
-                playerPojo.setSpectator(setSpectator());
                 playerPojo.setRacketPojo2(assignRacket2(playerPojo));
                 System.out.println("Cliente conectado");
                 ClientServerSocket clientServerSocket = new ClientServerSocket(socket);
@@ -69,17 +67,17 @@ public class ServerSocket implements ContractPlay.Server {
     }
 
     public void moveRacket1(int keyCode) {
-        if (keyCode == 65) {
+        if (keyCode == playerPojo.getPlayer1LeftKey()) {
             playerPojo.getRacketPojo1().setPoint(new Point(playerPojo.getRacketPojo1().getPoint().x, playerPojo.getRacketPojo1().getPoint().y - 10));
-        } else if (keyCode == 68) {
+        } else if (keyCode == playerPojo.getPlayer1RightKey()) {
             playerPojo.getRacketPojo1().setPoint(new Point(playerPojo.getRacketPojo1().getPoint().x, playerPojo.getRacketPojo1().getPoint().y + 10));
         }
     }
 
     public void moveRacket2(int keyCode) {
-        if (keyCode == 71) {
+        if (keyCode == playerPojo.getPlayer2LeftKey()) {
             playerPojo.getRacketPojo2().setPoint(new Point(playerPojo.getRacketPojo2().getPoint().x, playerPojo.getRacketPojo2().getPoint().y - 10));
-        } else if (keyCode == 72) {
+        } else if (keyCode == playerPojo.getPlayer2RightKey()) {
             playerPojo.getRacketPojo2().setPoint(new Point(playerPojo.getRacketPojo2().getPoint().x, playerPojo.getRacketPojo2().getPoint().y + 10));
         }
     }
@@ -110,7 +108,6 @@ public class ServerSocket implements ContractPlay.Server {
         playerPojo = new PlayerPojo();
         playerPojo.setNumberPlayer(numberPlayers);
         playerPojo.setTotalPlayers(numberPlayers + 1);
-        playerPojo.setSpectator(setSpectator());
         playerPojo.setRacketPojo1(assignRacket1(playerPojo));
         playerPojo.setRacketPojo2(assignRacket2(playerPojo));
         return playerPojo;
@@ -147,5 +144,15 @@ public class ServerSocket implements ContractPlay.Server {
         if (keyCode == 80) {
             playerPojo.setPlayer2StartGame(true);
         }
+    }
+
+    public void player1Keys(int right, int left){
+        playerPojo.setPlayer1RightKey(right);
+        playerPojo.setPlayer1LeftKey(left);
+    }
+
+    public void player2Keys(int right, int left){
+        playerPojo.setPlayer2RightKey(right);
+        playerPojo.setPlayer2LeftKey(left);
     }
 }

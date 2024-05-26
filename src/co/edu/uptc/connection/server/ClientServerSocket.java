@@ -36,12 +36,22 @@ public class ClientServerSocket {
                             int code = info.getCode();
                             int numberOfPLayer = info.getNumberPlayer();
                             int totalPlayers = info.getTotalPlayers();
-                            if(numberOfPLayer == 1 ){
-                                serverSocket.moveRacket1(code);
-                                serverSocket.player1StartGame(code);
-                            } else if (numberOfPLayer == totalPlayers) {
-                                serverSocket.moveRacket2(code);
-                                serverSocket.player2StartGame(code);
+                            if (code != 0) {
+                                if(numberOfPLayer == 1 ){
+                                    serverSocket.moveRacket1(code);
+                                    serverSocket.player1StartGame(code);
+                                } else if (numberOfPLayer == totalPlayers) {
+                                    serverSocket.moveRacket2(code);
+                                    serverSocket.player2StartGame(code);
+                                }
+                            }else {
+                                if(numberOfPLayer == 1 ){
+                                    serverSocket.player1Keys(info.getLeft(), info.getRight());
+                                    System.out.println("Player 1 keys" + info.getLeft() + " " + info.getRight());
+                                } else if (numberOfPLayer == totalPlayers) {
+                                    serverSocket.player2Keys(info.getLeft(), info.getRight());
+                                    System.out.println("Player 2 keys" + info.getLeft() + " " + info.getRight());
+                                }
                             }
 
                         }

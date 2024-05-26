@@ -5,12 +5,15 @@ import java.io.Serializable;
 public class PlayerPojo implements Serializable {
     private RacketPojo racketPojo1;
     private RacketPojo racketPojo2;
-    private boolean spectator = false;
     private int numberPlayer;
     private int totalPlayers;
     private boolean player1StartGame = false;
     private boolean player2StartGame = false;
     private boolean startMoveBall = false;
+    private int player1RightKey;
+    private int player1LeftKey;
+    private int player2RightKey;
+    private int player2LeftKey;
 
     public RacketPojo getRacketPojo1() {
         return racketPojo1;
@@ -26,14 +29,6 @@ public class PlayerPojo implements Serializable {
 
     public void setRacketPojo2(RacketPojo racketPojo2) {
         this.racketPojo2 = racketPojo2;
-    }
-
-    public boolean getSpectator() {
-        return spectator;
-    }
-
-    public void setSpectator(boolean spectator) {
-        this.spectator = spectator;
     }
 
     public int getNumberPlayer() {
@@ -76,9 +71,35 @@ public class PlayerPojo implements Serializable {
         this.player2StartGame = player2StartGame;
     }
 
-    @Override
-    public String toString() {
-        return "racketPojo1=" + racketPojo1 +
-                ", spectator=" + spectator + "\n";
+    public int getPlayer1RightKey() {
+        return player1RightKey;
+    }
+
+    public void setPlayer1RightKey(int player1RightKey) {
+        this.player1RightKey = player1RightKey;
+    }
+
+    public int getPlayer1LeftKey() {
+        return player1LeftKey;
+    }
+
+    public void setPlayer1LeftKey(int player1LeftKey) {
+        this.player1LeftKey = player1LeftKey;
+    }
+
+    public int getPlayer2RightKey() {
+        return player2RightKey;
+    }
+
+    public void setPlayer2RightKey(int player2RightKey) {
+        this.player2RightKey = player2RightKey;
+    }
+
+    public int getPlayer2LeftKey() {
+        return player2LeftKey;
+    }
+
+    public void setPlayer2LeftKey(int player2LeftKey) {
+        this.player2LeftKey = player2LeftKey;
     }
 }

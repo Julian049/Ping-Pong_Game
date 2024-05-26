@@ -6,7 +6,7 @@ import co.edu.uptc.pojo.InfoClient;
 import co.edu.uptc.pojo.PlayerPojo;
 import co.edu.uptc.presenter.ContractPlay;
 
-public class ManagerModelClient implements ContractPlay.ModelClient{
+public class ManagerModelClient implements ContractPlay.ModelClient {
 
     private ContractPlay.PresenterClient presenter;
     private ClientSocket clientSocket = new ClientSocket();
@@ -31,8 +31,8 @@ public class ManagerModelClient implements ContractPlay.ModelClient{
     }
 
     @Override
-    public void stopBall(boolean stop){
-        InfoClient info = new InfoClient(stop);
+    public void playerSetKeys(int numberOfPlayer, int totalPlayers, int left, int right) {
+        InfoClient info = new InfoClient(numberOfPlayer, totalPlayers, left, right);
         clientSocket.write(info);
     }
 
@@ -59,13 +59,17 @@ public class ManagerModelClient implements ContractPlay.ModelClient{
             this.playerPojo = newPLayer;
             firstUpdate = true;
             System.out.println("First update");
-        }else {
+        } else {
             this.playerPojo.setRacketPojo1(newPLayer.getRacketPojo1());
             this.playerPojo.setRacketPojo2(newPLayer.getRacketPojo2());
             this.playerPojo.setTotalPlayers(newPLayer.getTotalPlayers());
             this.playerPojo.setStartMoveBall(newPLayer.getStartMoveBall());
             this.playerPojo.setPlayer1StartGame(newPLayer.getPlayer1StartGame());
             this.playerPojo.setPlayer2StartGame(newPLayer.getPlayer2StartGame());
+            this.playerPojo.setPlayer1LeftKey(newPLayer.getPlayer1LeftKey());
+            this.playerPojo.setPlayer1RightKey(newPLayer.getPlayer1RightKey());
+            this.playerPojo.setPlayer2LeftKey(newPLayer.getPlayer2LeftKey());
+            this.playerPojo.setPlayer2RightKey(newPLayer.getPlayer2RightKey());
         }
         if (playerPojo.getStartMoveBall() && !ballIsMoving) {
             startBall();

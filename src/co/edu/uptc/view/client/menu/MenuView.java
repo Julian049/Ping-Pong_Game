@@ -1,5 +1,6 @@
 package co.edu.uptc.view.client.menu;
 
+import co.edu.uptc.util.SleepUtil;
 import co.edu.uptc.util.ViewPropertiesUtil;
 import co.edu.uptc.view.client.ManagerView;
 
@@ -18,6 +19,15 @@ public class MenuView extends JFrame implements Serializable {
 
     public MenuView() {
         initComponents();
+        Thread thread = new Thread(() -> {
+            while (true) {
+                SleepUtil.sleep(100);
+                if (managerView.getPlayerPojo().getNumberPlayer() != 1 && managerView.getPlayerPojo().getNumberPlayer() != managerView.getPlayerPojo().getTotalPlayers()) {
+                    settingsButton.setEnabled(false);
+                }
+            }
+        });
+        thread.start();
     }
 
     public void setManagerView(ManagerView managerView) {
@@ -63,10 +73,15 @@ public class MenuView extends JFrame implements Serializable {
         startGameButton.setFocusPainted(false);
         startGameButton.setBorderPainted(false);
         startGameButton.addActionListener(e -> {
-            close();
-            managerView.startGame();
+            if (optionsPanelView.getLeftKey() == 0 || optionsPanelView.getRightKey() == 0){
+                JOptionPane.showMessageDialog(null, "Select a key","ERROR", JOptionPane.ERROR_MESSAGE);
+            }else {
+                close();
+                managerView.startGame();
+            }
         });
     }
+
     private void createSettingsButton() {
         settingsButton = new JButton(ViewPropertiesUtil.SETTINGS_BUTTON);
         settingsButton.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 20));
@@ -121,5 +136,13 @@ public class MenuView extends JFrame implements Serializable {
 
     public void close() {
         this.setVisible(false);
+    }
+
+    public int getRightKey() {
+        return optionsPanelView.getRightKey();
+    }
+
+    public int getLeftKey() {
+        return optionsPanelView.getLeftKey();
     }
 }

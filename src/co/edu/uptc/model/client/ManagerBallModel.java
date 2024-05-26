@@ -51,7 +51,6 @@ public class ManagerBallModel {
         if (ballPojo.getPoint().x <= 0) {
             ballPojo.setDirection(DirectionEnum.RIGHT);
             player2Points++;
-            managerModelClient.stopBall(true);
         }
     }
 
@@ -62,7 +61,6 @@ public class ManagerBallModel {
         if (ballPojo.getPoint().x >= managerModelClient.getPlayerPojo().getTotalPlayers() * 500) {
             ballPojo.setDirection(DirectionEnum.LEFT);
             player1Points++;
-            managerModelClient.stopBall(true);
         }
     }
 

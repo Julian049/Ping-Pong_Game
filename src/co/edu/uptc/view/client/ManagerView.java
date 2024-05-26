@@ -51,6 +51,7 @@ public class ManagerView extends JFrame implements ContractPlay.View {
         menuView.backToMenu();
     }
 
+    @Override
     public void startGame() {
         managePlayerView = new ManagerPlayerView(this, ballPojo);
         managePlayerView.run();
@@ -74,6 +75,18 @@ public class ManagerView extends JFrame implements ContractPlay.View {
     @Override
     public void updatePlayer2Points(int player2Points) {
         managePlayerView.player2PointsLabel().setText("Player 2: " + player2Points);
+    }
+
+    public PlayerPojo getPlayerPojo() {
+        return playerPojo;
+    }
+
+    public int getRightKey() {
+        return menuView.getRightKey();
+    }
+
+    public int getLeftKey() {
+        return menuView.getLeftKey();
     }
 
 }

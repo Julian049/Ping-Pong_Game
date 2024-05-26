@@ -120,14 +120,6 @@ public class PlayerView extends JPanel {
 
             @Override
             public void keyPressed(KeyEvent e) {
-//                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-//                    managerView.presenter.moveCannonLeft();
-//                } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-//                    managerView.presenter.moveCannonRight();
-//                } else if (e.getKeyChar() == managerView.getKeyToShoot()) {
-//                    managerView.presenter.shoot();
-//                }
-
                 managerView.presenter.sendKey(e.getKeyCode());
             }
 

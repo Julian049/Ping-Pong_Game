@@ -33,8 +33,7 @@ public class ManagerPresenterClient implements ContractPlay.PresenterClient {
         makeMVP();
         model.run();
         view.setPlayerPojo(model.getPlayerPojo());
-        view.startGame();
-        model.updateCountPoints();
+        view.initMenu();
     }
 
     public void makeMVP() {
@@ -98,5 +97,10 @@ public class ManagerPresenterClient implements ContractPlay.PresenterClient {
     @Override
     public void updatePlayer2Points(int player2Points) {
         view.updatePlayer2Points(player2Points);
+    }
+
+    @Override
+    public void sendPlayerKeys(int leftKey,int rightKey){
+        model.playerSetKeys(model.getPlayerPojo().getNumberPlayer(),model.getPlayerPojo().getTotalPlayers(), leftKey,rightKey);
     }
 }
