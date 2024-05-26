@@ -120,7 +120,8 @@ public class PlayerView extends JPanel {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                managerView.presenter.sendKey(e.getKeyCode());
+                //Se asegura que se pueda mover la raqueta sin restriccion de mayusculas o minusculas
+                managerView.presenter.sendKey(Character.toUpperCase(e.getKeyChar()));
             }
 
             @Override

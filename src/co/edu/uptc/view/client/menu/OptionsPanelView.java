@@ -85,7 +85,7 @@ public class OptionsPanelView extends JPanel implements Serializable {
                 selectRightKeyTextArea.addKeyListener(new KeyListener() {
                     @Override
                     public void keyTyped(KeyEvent e) {
-                        rightKey = e.getKeyChar();
+                        rightKey = Character.toUpperCase(e.getKeyChar());
                         selectRightKeyTextArea.setText(ViewPropertiesUtil.KEY_SELECTED + rightKey);
                     }
 
@@ -123,8 +123,8 @@ public class OptionsPanelView extends JPanel implements Serializable {
                 selectLeftKeyTextArea.addKeyListener(new KeyListener() {
                     @Override
                     public void keyTyped(KeyEvent e) {
-                        leftKey = e.getKeyChar();
-                        selectLeftKeyTextArea.setText(ViewPropertiesUtil.KEY_SELECTED + rightKey);
+                        leftKey = Character.toUpperCase(e.getKeyChar());
+                        selectLeftKeyTextArea.setText(ViewPropertiesUtil.KEY_SELECTED + leftKey);
                     }
 
                     @Override
