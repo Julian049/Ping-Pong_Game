@@ -83,12 +83,12 @@ public class ManagerView extends JFrame implements ContractPlay.View {
         return playerPojo;
     }
 
-    public int getRightKey() {
-        return menuView.getRightKey();
+    public int getUpKey() {
+        return menuView.getUpKey();
     }
 
-    public int getLeftKey() {
-        return menuView.getLeftKey();
+    public int getDownKey() {
+        return menuView.getDownKey();
     }
 
 }

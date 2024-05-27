@@ -10,10 +10,12 @@ public class PlayerPojo implements Serializable {
     private int totalPlayers;
     private boolean player1StartGame = false;
     private boolean player2StartGame = false;
-    private int player1RightKey;
-    private int player1LeftKey;
-    private int player2RightKey;
-    private int player2LeftKey;
+    private int player1UpKey;
+    private int player1DownKey;
+    private int player1ThrowBallKey;
+    private int player2UpKey;
+    private int player2DownKey;
+    private int player2ThrowBallKey;
     private int player1Score;
     private int player2Score;
 
@@ -80,36 +82,36 @@ public class PlayerPojo implements Serializable {
         this.player2StartGame = player2StartGame;
     }
 
-    public int getPlayer1RightKey() {
-        return player1RightKey;
+    public int getPlayer1UpKey() {
+        return player1UpKey;
     }
 
-    public void setPlayer1RightKey(int player1RightKey) {
-        this.player1RightKey = player1RightKey;
+    public void setPlayer1UpKey(int player1UpKey) {
+        this.player1UpKey = player1UpKey;
     }
 
-    public int getPlayer1LeftKey() {
-        return player1LeftKey;
+    public int getPlayer1DownKey() {
+        return player1DownKey;
     }
 
-    public void setPlayer1LeftKey(int player1LeftKey) {
-        this.player1LeftKey = player1LeftKey;
+    public void setPlayer1DownKey(int player1DownKey) {
+        this.player1DownKey = player1DownKey;
     }
 
-    public int getPlayer2RightKey() {
-        return player2RightKey;
+    public int getPlayer2UpKey() {
+        return player2UpKey;
     }
 
-    public void setPlayer2RightKey(int player2RightKey) {
-        this.player2RightKey = player2RightKey;
+    public void setPlayer2UpKey(int player2UpKey) {
+        this.player2UpKey = player2UpKey;
     }
 
-    public int getPlayer2LeftKey() {
-        return player2LeftKey;
+    public int getPlayer2DownKey() {
+        return player2DownKey;
     }
 
-    public void setPlayer2LeftKey(int player2LeftKey) {
-        this.player2LeftKey = player2LeftKey;
+    public void setPlayer2DownKey(int player2DownKey) {
+        this.player2DownKey = player2DownKey;
     }
 
     public BallPojo getBallPojo() {
@@ -118,5 +120,21 @@ public class PlayerPojo implements Serializable {
 
     public void setBallPojo(BallPojo ballPojo) {
         this.ballPojo = ballPojo;
+    }
+
+    public int getPlayer2ThrowBallKey() {
+        return player2ThrowBallKey;
+    }
+
+    public void setPlayer2ThrowBallKey(int player2ThrowBallKey) {
+        this.player2ThrowBallKey = player2ThrowBallKey;
+    }
+
+    public int getPlayer1ThrowBallKey() {
+        return player1ThrowBallKey;
+    }
+
+    public void setPlayer1ThrowBallKey(int player1ThrowBallKey) {
+        this.player1ThrowBallKey = player1ThrowBallKey;
     }
 }

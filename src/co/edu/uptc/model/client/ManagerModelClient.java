@@ -26,8 +26,8 @@ public class ManagerModelClient implements ContractPlay.ModelClient {
     }
 
     @Override
-    public void playerSetKeys(int numberOfPlayer, int totalPlayers, int left, int right) {
-        InfoClient info = new InfoClient(numberOfPlayer, totalPlayers, left, right);
+    public void playerSetKeys(int numberOfPlayer, int totalPlayers, int down, int up,int throwBall){
+        InfoClient info = new InfoClient(numberOfPlayer, totalPlayers, down, up,throwBall);
         clientSocket.write(info);
     }
 
@@ -60,10 +60,12 @@ public class ManagerModelClient implements ContractPlay.ModelClient {
             this.playerPojo.setTotalPlayers(newPLayer.getTotalPlayers());
             this.playerPojo.setPlayer1StartGame(newPLayer.getPlayer1StartGame());
             this.playerPojo.setPlayer2StartGame(newPLayer.getPlayer2StartGame());
-            this.playerPojo.setPlayer1LeftKey(newPLayer.getPlayer1LeftKey());
-            this.playerPojo.setPlayer1RightKey(newPLayer.getPlayer1RightKey());
-            this.playerPojo.setPlayer2LeftKey(newPLayer.getPlayer2LeftKey());
-            this.playerPojo.setPlayer2RightKey(newPLayer.getPlayer2RightKey());
+            this.playerPojo.setPlayer1DownKey(newPLayer.getPlayer1DownKey());
+            this.playerPojo.setPlayer1UpKey(newPLayer.getPlayer1UpKey());
+            this.playerPojo.setPlayer1ThrowBallKey(newPLayer.getPlayer1ThrowBallKey());
+            this.playerPojo.setPlayer2DownKey(newPLayer.getPlayer2DownKey());
+            this.playerPojo.setPlayer2UpKey(newPLayer.getPlayer2UpKey());
+            this.playerPojo.setPlayer2ThrowBallKey(newPLayer.getPlayer2ThrowBallKey());
             this.playerPojo.setBallPojo(newPLayer.getBallPojo());
             this.playerPojo.setPlayer1Score(newPLayer.getPlayer1Score());
             this.playerPojo.setPlayer2Score(newPLayer.getPlayer2Score());

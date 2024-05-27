@@ -63,17 +63,17 @@ public class ServerSocket implements ContractPlay.Server {
     }
 
     public void moveRacket1(int keyCode) {
-        if (keyCode == playerPojo.getPlayer1LeftKey()) {
+        if (keyCode == playerPojo.getPlayer1UpKey()) {
             playerPojo.getRacketPojo1().setPoint(new Point(playerPojo.getRacketPojo1().getPoint().x, playerPojo.getRacketPojo1().getPoint().y - 10));
-        } else if (keyCode == playerPojo.getPlayer1RightKey()) {
+        } else if (keyCode == playerPojo.getPlayer1DownKey()) {
             playerPojo.getRacketPojo1().setPoint(new Point(playerPojo.getRacketPojo1().getPoint().x, playerPojo.getRacketPojo1().getPoint().y + 10));
         }
     }
 
     public void moveRacket2(int keyCode) {
-        if (keyCode == playerPojo.getPlayer2LeftKey()) {
+        if (keyCode == playerPojo.getPlayer2UpKey()) {
             playerPojo.getRacketPojo2().setPoint(new Point(playerPojo.getRacketPojo2().getPoint().x, playerPojo.getRacketPojo2().getPoint().y - 10));
-        } else if (keyCode == playerPojo.getPlayer2RightKey()) {
+        } else if (keyCode == playerPojo.getPlayer2DownKey()) {
             playerPojo.getRacketPojo2().setPoint(new Point(playerPojo.getRacketPojo2().getPoint().x, playerPojo.getRacketPojo2().getPoint().y + 10));
         }
     }
@@ -129,25 +129,27 @@ public class ServerSocket implements ContractPlay.Server {
     }
 
     public void player1StartGame(int keyCode) {
-        if (keyCode == 16 || keyCode == 80) {
+        if (keyCode == 16 || keyCode == playerPojo.getPlayer1ThrowBallKey()) {
             playerPojo.setPlayer1StartGame(true);
         }
     }
 
     public void player2StartGame(int keyCode) {
-        if (keyCode == 16 || keyCode == 80) {
+        if (keyCode == 16 || keyCode == playerPojo.getPlayer2ThrowBallKey()) {
             playerPojo.setPlayer2StartGame(true);
         }
     }
 
-    public void player1Keys(int right, int left) {
-        playerPojo.setPlayer1RightKey(right);
-        playerPojo.setPlayer1LeftKey(left);
+    public void player1Keys(int up, int down, int throwBall) {
+        playerPojo.setPlayer1UpKey(up);
+        playerPojo.setPlayer1DownKey(down);
+        playerPojo.setPlayer1ThrowBallKey(throwBall);
     }
 
-    public void player2Keys(int right, int left) {
-        playerPojo.setPlayer2RightKey(right);
-        playerPojo.setPlayer2LeftKey(left);
+    public void player2Keys(int up, int down,int throwBall) {
+        playerPojo.setPlayer2UpKey(up);
+        playerPojo.setPlayer2DownKey(down);
+        playerPojo.setPlayer2ThrowBallKey(throwBall);
     }
 
     public void startBall() {
@@ -185,43 +187,20 @@ public class ServerSocket implements ContractPlay.Server {
             //Nose
             playerPojo.setPlayer2Score(playerPojo.getPlayer2Score() + 1);
             ballPojo.setDirection(DirectionEnum.RIGHT);
-            ballPojo.setPoint(new Point(((playerPojo.getTotalPlayers() * 500)-30), cordY));
+            ballPojo.setPoint(new Point(((playerPojo.getTotalPlayers() * 500)-50), cordY));
+            playerPojo.getRacketPojo2().setPoint(new Point((playerPojo.getTotalPlayers() * 500) - 30, (cordY-20)));
             playerPojo.setPlayer2StartGame(false);
         } else if (cordX >= playerPojo.getTotalPlayers() * 500) {
             playerPojo.setPlayer1Score(playerPojo.getPlayer1Score() + 1);
             ballPojo.setDirection(DirectionEnum.LEFT);
-            ballPojo.setPoint(new Point(20, cordY));
-            playerPojo.getRacketPojo1().setPoint(new Point(10, (cordY-30)));
-            playerPojo.setPlayer1StartGame(false);
-        }
-    }
-
-    public void leftBallPojo(BallPojo ballPojo) {
-        int cordX = ballPojo.getPoint().x - ballPojo.getSpeed();
-        int cordY = ballPojo.getPoint().y;
-        ballPojo.setPoint(new Point(cordX, cordY));
-        if (ballPojo.getPoint().x <= 0) {
-            //Nose
-            playerPojo.setPlayer2Score(playerPojo.getPlayer2Score() + 1);
-            ballPojo.setDirection(DirectionEnum.RIGHT);
-            ballPojo.setPoint(new Point(20, 0));
-            playerPojo.setPlayer2StartGame(false);
-        }
-    }
-
-    public void rightBallPojo(BallPojo ballPojo) {
-        int cordX = ballPojo.getPoint().x + ballPojo.getSpeed();
-        int cordY = ballPojo.getPoint().y;
-        ballPojo.setPoint(new Point(cordX, cordY));
-        if (ballPojo.getPoint().x >= playerPojo.getTotalPlayers() * 500) {
-            playerPojo.setPlayer1Score(playerPojo.getPlayer1Score() + 1);
-            ballPojo.setDirection(DirectionEnum.LEFT);
-            ballPojo.setPoint(new Point(20, 0));
+            ballPojo.setPoint(new Point(30, cordY));
+            playerPojo.getRacketPojo1().setPoint(new Point(10, (cordY-20)));
             playerPojo.setPlayer1StartGame(false);
         }
     }
 
     public void initCollision() {
+        //aaasdaadasdasdasdasd
         Thread thread = new Thread(() -> {
             while (true) {
                 SleepUtil.sleep(1);

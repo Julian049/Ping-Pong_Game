@@ -46,11 +46,11 @@ public class ClientServerSocket {
                                 }
                             }else {
                                 if(numberOfPLayer == 1 ){
-                                    serverSocket.player1Keys(info.getLeft(), info.getRight());
-                                    System.out.println("Player 1 keys" + info.getLeft() + " " + info.getRight());
+                                    serverSocket.player1Keys(info.getDown(), info.getUp(), info.getThrowBall());
+                                    System.out.println("Player 1 keys" + info.getDown() + " " + info.getUp());
                                 } else if (numberOfPLayer == totalPlayers) {
-                                    serverSocket.player2Keys(info.getLeft(), info.getRight());
-                                    System.out.println("Player 2 keys" + info.getLeft() + " " + info.getRight());
+                                    serverSocket.player2Keys(info.getDown(), info.getUp(), info.getThrowBall());
+                                    System.out.println("Player 2 keys" + info.getDown() + " " + info.getUp());
                                 }
                             }
 

@@ -14,14 +14,17 @@ import java.io.Serializable;
 public class OptionsPanelView extends JPanel implements Serializable {
 
     private JLabel settingsLabel;
-    private JLabel selectRightKeyLabel;
-    private JTextArea selectRightKeyTextArea;
-    private JLabel selectLeftKeyLabel;
-    private JTextArea selectLeftKeyTextArea;
+    private JLabel selectUpKeyLabel;
+    private JTextArea selectUpKeyTextArea;
+    private JLabel selectDownKeyLabel;
+    private JTextArea selectDownKeyTextArea;
+    private JLabel selectThrowBallLabel;
+    private JTextArea selectThrowBallTextArea;
     private JLabel noteLabel;
     private JButton backButton;
-    private int rightKey;
-    private int leftKey;
+    private int upKey;
+    private int downKey;
+    private int throwKey;
     private ManagerView managerView = new ManagerView();
 
     public OptionsPanelView() {
@@ -52,10 +55,12 @@ public class OptionsPanelView extends JPanel implements Serializable {
 
     private void createComponents() {
         createSettingsLabel();
-        createRightKeyTextArea();
-        createRightKeyLabel();
-        createLeftKeyTextArea();
-        createLeftKeyLabel();
+        createUpKeyTextArea();
+        createUpKeyLabel();
+        createDownKeyTextArea();
+        createDownKeyLabel();
+        createThrowBallKeyTextArea();
+        createThrowBallKeyLabel();
         createNoteLabel();
         createBackButton();
     }
@@ -67,26 +72,26 @@ public class OptionsPanelView extends JPanel implements Serializable {
         settingsLabel.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
-    private void createRightKeyLabel() {
-        selectRightKeyLabel = new JLabel(ViewPropertiesUtil.MOVE_RIGHT);
-        selectRightKeyLabel.setForeground(ViewPropertiesUtil.TEXT_COLOR2);
-        selectRightKeyLabel.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10));
+    private void createUpKeyLabel() {
+        selectUpKeyLabel = new JLabel(ViewPropertiesUtil.MOVE_UP);
+        selectUpKeyLabel.setForeground(ViewPropertiesUtil.TEXT_COLOR2);
+        selectUpKeyLabel.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10));
     }
 
-    private void createRightKeyTextArea() {
-        selectRightKeyTextArea = new JTextArea(ViewPropertiesUtil.CLICK_TO_SET_A_KEY);
-        selectRightKeyTextArea.setForeground(ViewPropertiesUtil.TEXT_COLOR2);
-        selectRightKeyTextArea.setBackground(new Color(0, 0, 0, 0));
-        selectRightKeyTextArea.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10));
-        selectRightKeyTextArea.addMouseListener(new MouseAdapter() {
+    private void createUpKeyTextArea() {
+        selectUpKeyTextArea = new JTextArea(ViewPropertiesUtil.CLICK_TO_SET_A_KEY);
+        selectUpKeyTextArea.setForeground(ViewPropertiesUtil.TEXT_COLOR2);
+        selectUpKeyTextArea.setBackground(new Color(0, 0, 0, 0));
+        selectUpKeyTextArea.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10));
+        selectUpKeyTextArea.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                selectRightKeyTextArea.setText(ViewPropertiesUtil.PRESS_A_KEY);
-                selectRightKeyTextArea.addKeyListener(new KeyListener() {
+                selectUpKeyTextArea.setText(ViewPropertiesUtil.PRESS_A_KEY);
+                selectUpKeyTextArea.addKeyListener(new KeyListener() {
                     @Override
                     public void keyTyped(KeyEvent e) {
-                        rightKey = Character.toUpperCase(e.getKeyChar());
-                        selectRightKeyTextArea.setText(ViewPropertiesUtil.KEY_SELECTED + rightKey);
+                        upKey = Character.toUpperCase(e.getKeyChar());
+                        selectUpKeyTextArea.setText(ViewPropertiesUtil.KEY_SELECTED + upKey);
                     }
 
                     @Override
@@ -101,30 +106,30 @@ public class OptionsPanelView extends JPanel implements Serializable {
                 });
             }
         });
-        selectRightKeyTextArea.setEditable(false);
-        selectRightKeyTextArea.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        selectUpKeyTextArea.setEditable(false);
+        selectUpKeyTextArea.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
-    private void createLeftKeyLabel() {
-        selectLeftKeyLabel = new JLabel(ViewPropertiesUtil.MOVE_LEFT);
-        selectLeftKeyLabel.setForeground(ViewPropertiesUtil.TEXT_COLOR2);
-        selectLeftKeyLabel.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10));
+    private void createDownKeyLabel() {
+        selectDownKeyLabel = new JLabel(ViewPropertiesUtil.MOVE_DOWN);
+        selectDownKeyLabel.setForeground(ViewPropertiesUtil.TEXT_COLOR2);
+        selectDownKeyLabel.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10));
     }
 
-    private void createLeftKeyTextArea() {
-        selectLeftKeyTextArea = new JTextArea(ViewPropertiesUtil.CLICK_TO_SET_A_KEY);
-        selectLeftKeyTextArea.setForeground(ViewPropertiesUtil.TEXT_COLOR2);
-        selectLeftKeyTextArea.setBackground(new Color(0, 0, 0, 0));
-        selectLeftKeyTextArea.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10));
-        selectLeftKeyTextArea.addMouseListener(new MouseAdapter() {
+    private void createDownKeyTextArea() {
+        selectDownKeyTextArea = new JTextArea(ViewPropertiesUtil.CLICK_TO_SET_A_KEY);
+        selectDownKeyTextArea.setForeground(ViewPropertiesUtil.TEXT_COLOR2);
+        selectDownKeyTextArea.setBackground(new Color(0, 0, 0, 0));
+        selectDownKeyTextArea.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10));
+        selectDownKeyTextArea.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                selectLeftKeyTextArea.setText(ViewPropertiesUtil.PRESS_A_KEY);
-                selectLeftKeyTextArea.addKeyListener(new KeyListener() {
+                selectDownKeyTextArea.setText(ViewPropertiesUtil.PRESS_A_KEY);
+                selectDownKeyTextArea.addKeyListener(new KeyListener() {
                     @Override
                     public void keyTyped(KeyEvent e) {
-                        leftKey = Character.toUpperCase(e.getKeyChar());
-                        selectLeftKeyTextArea.setText(ViewPropertiesUtil.KEY_SELECTED + leftKey);
+                        downKey = Character.toUpperCase(e.getKeyChar());
+                        selectDownKeyTextArea.setText(ViewPropertiesUtil.KEY_SELECTED + downKey);
                     }
 
                     @Override
@@ -139,8 +144,46 @@ public class OptionsPanelView extends JPanel implements Serializable {
                 });
             }
         });
-        selectLeftKeyTextArea.setEditable(false);
-        selectLeftKeyTextArea.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        selectDownKeyTextArea.setEditable(false);
+        selectDownKeyTextArea.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }
+
+    private void createThrowBallKeyLabel() {
+        selectThrowBallLabel = new JLabel(ViewPropertiesUtil.THROW_BALL);
+        selectThrowBallLabel.setForeground(ViewPropertiesUtil.TEXT_COLOR2);
+        selectThrowBallLabel.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10));
+    }
+
+    private void createThrowBallKeyTextArea() {
+        selectThrowBallTextArea = new JTextArea(ViewPropertiesUtil.CLICK_TO_SET_A_KEY);
+        selectThrowBallTextArea.setForeground(ViewPropertiesUtil.TEXT_COLOR2);
+        selectThrowBallTextArea.setBackground(new Color(0, 0, 0, 0));
+        selectThrowBallTextArea.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10));
+        selectThrowBallTextArea.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                selectThrowBallTextArea.setText(ViewPropertiesUtil.PRESS_A_KEY);
+                selectThrowBallTextArea.addKeyListener(new KeyListener() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        throwKey = Character.toUpperCase(e.getKeyChar());
+                        selectThrowBallTextArea.setText(ViewPropertiesUtil.KEY_SELECTED + throwKey);
+                    }
+
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+
+                    }
+
+                    @Override
+                    public void keyReleased(KeyEvent e) {
+
+                    }
+                });
+            }
+        });
+        selectThrowBallTextArea.setEditable(false);
+        selectThrowBallTextArea.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     private void createNoteLabel() {
@@ -158,11 +201,11 @@ public class OptionsPanelView extends JPanel implements Serializable {
         backButton.setFocusPainted(false);
         backButton.setBorderPainted(false);
         backButton.addActionListener(e -> {
-            if (leftKey == 0 || rightKey == 0){
+            if (downKey == 0 || upKey == 0 || throwKey == 0){
                 JOptionPane.showMessageDialog(null, "Select a key","ERROR", JOptionPane.ERROR_MESSAGE);
             }else {
                 managerView.backToMenu();
-                managerView.presenter.sendPlayerKeys(leftKey,rightKey);
+                managerView.presenter.sendPlayerKeys(downKey,upKey,throwKey);
             }
         });
     }
@@ -182,34 +225,46 @@ public class OptionsPanelView extends JPanel implements Serializable {
         gbc.weighty = 0.5;
         gbc.anchor = GridBagConstraints.WEST;
         gbc.insets = new Insets(0, 0, 0, 20);
-        add(selectRightKeyLabel, gbc);
+        add(selectUpKeyLabel, gbc);
 
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(0, 20, 0, 0);
-        add(selectRightKeyTextArea, gbc);
+        add(selectUpKeyTextArea, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.anchor = GridBagConstraints.WEST;
         gbc.insets = new Insets(0, 0, 0, 20);
-        add(selectLeftKeyLabel, gbc);
+        add(selectDownKeyLabel, gbc);
 
         gbc.gridx = 1;
         gbc.gridy = 2;
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(0, 20, 0, 0);
-        add(selectLeftKeyTextArea, gbc);
+        add(selectDownKeyTextArea, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 3;
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.insets = new Insets(0, 0, 0, 20);
+        add(selectThrowBallLabel, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0, 20, 0, 0);
+        add(selectThrowBallTextArea, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
         gbc.gridwidth = 2;
         gbc.insets = new Insets(0, 0, 0, 0);
         add(noteLabel, gbc);
 
         gbc.gridx = 0;
-        gbc.gridy = 4;
+        gbc.gridy = 5;
         add(backButton, gbc);
     }
 
@@ -222,19 +277,27 @@ public class OptionsPanelView extends JPanel implements Serializable {
         this.setVisible(false);
     }
 
-    public int getRightKey() {
-        return rightKey;
+    public int getUpKey() {
+        return upKey;
     }
 
-    public int getLeftKey() {
-        return leftKey;
+    public int getDownKey() {
+        return downKey;
     }
 
-    public void setRightKey(int rightKey) {
-        this.rightKey = rightKey;
+    public void setUpKey(int upKey) {
+        this.upKey = upKey;
     }
 
-    public void setLeftKey(int leftKey) {
-        this.leftKey = leftKey;
+    public void setDownKey(int downKey) {
+        this.downKey = downKey;
+    }
+
+    public void setThrowKey(int throwKey) {
+        this.throwKey = throwKey;
+    }
+
+    public int getThrowKey() {
+        return throwKey;
     }
 }

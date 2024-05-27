@@ -105,7 +105,7 @@ public class ManagerPresenterClient implements ContractPlay.PresenterClient {
     }
 
     @Override
-    public void sendPlayerKeys(int leftKey,int rightKey){
-        model.playerSetKeys(model.getPlayerPojo().getNumberPlayer(),model.getPlayerPojo().getTotalPlayers(), leftKey,rightKey);
+    public void sendPlayerKeys(int downKey,int upKey, int throwBall){
+        model.playerSetKeys(model.getPlayerPojo().getNumberPlayer(),model.getPlayerPojo().getTotalPlayers(), downKey,upKey,throwBall);
     }
 }

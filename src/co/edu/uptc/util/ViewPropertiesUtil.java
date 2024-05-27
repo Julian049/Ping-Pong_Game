@@ -36,8 +36,8 @@ public class ViewPropertiesUtil {
     public static String CLICK_TO_SET_A_KEY = propertiesText.getProperty("clickToSetAKey");
     public static String PRESS_A_KEY = propertiesText.getProperty("pressKey");
     public static String KEY_SELECTED = propertiesText.getProperty("keySelected");
-    public static String MOVE_RIGHT = propertiesText.getProperty("moveRight");
-    public static String MOVE_LEFT = propertiesText.getProperty("moveLeft");
+    public static String MOVE_UP = propertiesText.getProperty("moveUp");
+    public static String MOVE_DOWN = propertiesText.getProperty("moveDown");
     public static String THROW_BALL = propertiesText.getProperty("throwBall");
     public static String ANY_KEY_SELECTED_ERROR = propertiesText.getProperty("anyKeySelectedError");
     public static String ERROR_TITLE = propertiesText.getProperty("errorWindowTitle");
