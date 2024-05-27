@@ -75,7 +75,11 @@ public class MenuView extends JFrame implements Serializable {
         startGameButton.addActionListener(e -> {
             if (managerView.getPlayerPojo().getNumberPlayer() == 1 || managerView.getPlayerPojo().getNumberPlayer() == managerView.getPlayerPojo().getTotalPlayers()) {
                 if (optionsPanelView.getLeftKey() == 0 || optionsPanelView.getRightKey() == 0) {
-                    JOptionPane.showMessageDialog(null, "Select a key", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    //JOptionPane.showMessageDialog(null, "Select a key", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    optionsPanelView.setLeftKey(65);
+                    optionsPanelView.setRightKey(68);
+                    close();
+                    managerView.startGame(e.getModifiers());
                 } else {
                     close();
                     managerView.startGame(e.getModifiers());

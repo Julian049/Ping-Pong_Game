@@ -229,4 +229,12 @@ public class OptionsPanelView extends JPanel implements Serializable {
     public int getLeftKey() {
         return leftKey;
     }
+
+    public void setRightKey(int rightKey) {
+        this.rightKey = rightKey;
+    }
+
+    public void setLeftKey(int leftKey) {
+        this.leftKey = leftKey;
+    }
 }

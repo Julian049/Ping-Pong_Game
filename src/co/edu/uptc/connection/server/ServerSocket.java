@@ -185,12 +185,13 @@ public class ServerSocket implements ContractPlay.Server {
             //Nose
             playerPojo.setPlayer2Score(playerPojo.getPlayer2Score() + 1);
             ballPojo.setDirection(DirectionEnum.RIGHT);
-            ballPojo.setPoint(new Point(20, 0));
+            ballPojo.setPoint(new Point(((playerPojo.getTotalPlayers() * 500)-30), cordY));
             playerPojo.setPlayer2StartGame(false);
         } else if (cordX >= playerPojo.getTotalPlayers() * 500) {
             playerPojo.setPlayer1Score(playerPojo.getPlayer1Score() + 1);
             ballPojo.setDirection(DirectionEnum.LEFT);
-            ballPojo.setPoint(new Point(20, 0));
+            ballPojo.setPoint(new Point(20, cordY));
+            playerPojo.getRacketPojo1().setPoint(new Point(10, (cordY-30)));
             playerPojo.setPlayer1StartGame(false);
         }
     }
