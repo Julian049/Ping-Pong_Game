@@ -36,6 +36,11 @@ public class ManagerPresenterClient implements ContractPlay.PresenterClient {
         view.initMenu();
     }
 
+    @Override
+    public void updateCountPoints() {
+        model.updateCountPoints();
+    }
+
     public void makeMVP() {
         ManagerView managerView = new ManagerView();
         managerView.setPresenter(this);

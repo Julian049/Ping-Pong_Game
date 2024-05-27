@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class PlayerPojo implements Serializable {
     private RacketPojo racketPojo1;
     private RacketPojo racketPojo2;
+    private BallPojo ballPojo;
     private int numberPlayer;
     private int totalPlayers;
     private boolean player1StartGame = false;
@@ -13,6 +14,24 @@ public class PlayerPojo implements Serializable {
     private int player1LeftKey;
     private int player2RightKey;
     private int player2LeftKey;
+    private int player1Score;
+    private int player2Score;
+
+    public int getPlayer1Score() {
+        return player1Score;
+    }
+
+    public void setPlayer1Score(int player1Score) {
+        this.player1Score = player1Score;
+    }
+
+    public int getPlayer2Score() {
+        return player2Score;
+    }
+
+    public void setPlayer2Score(int player2Score) {
+        this.player2Score = player2Score;
+    }
 
     public RacketPojo getRacketPojo1() {
         return racketPojo1;
@@ -91,5 +110,13 @@ public class PlayerPojo implements Serializable {
 
     public void setPlayer2LeftKey(int player2LeftKey) {
         this.player2LeftKey = player2LeftKey;
+    }
+
+    public BallPojo getBallPojo() {
+        return ballPojo;
+    }
+
+    public void setBallPojo(BallPojo ballPojo) {
+        this.ballPojo = ballPojo;
     }
 }

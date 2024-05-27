@@ -5,7 +5,7 @@ import co.edu.uptc.pojo.PlayerPojo;
 import co.edu.uptc.presenter.ContractPlay;
 import co.edu.uptc.connection.server.ServerSocket;
 
-public class ManagerPresenterServer implements ContractPlay.PresenterServer{
+public class ManagerPresenterServer implements ContractPlay.PresenterServer {
 
     private ContractPlay.ModelServer model;
     private ContractPlay.Server server;

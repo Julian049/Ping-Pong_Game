@@ -10,14 +10,9 @@ public class ManagerModelClient implements ContractPlay.ModelClient {
 
     private ContractPlay.PresenterClient presenter;
     private ClientSocket clientSocket = new ClientSocket();
-    private ManagerBallModel ballModel = new ManagerBallModel();
     private PlayerPojo playerPojo;
     private boolean firstUpdate = false;
     private boolean ballIsMoving = false;
-
-    public ManagerModelClient() {
-        ballModel.setManagerModelClient(this);
-    }
 
     @Override
     public void setPresenter(ContractPlay.PresenterClient presenter) {
@@ -45,12 +40,12 @@ public class ManagerModelClient implements ContractPlay.ModelClient {
 
     @Override
     public void startBall() {
-        ballModel.startBall();
+        //ballModel.startBall();
     }
 
     @Override
     public BallPojo getBallPojo() {
-        return ballModel.getBallPojo();
+        return playerPojo.getBallPojo();
     }
 
     @Override
@@ -69,11 +64,9 @@ public class ManagerModelClient implements ContractPlay.ModelClient {
             this.playerPojo.setPlayer1RightKey(newPLayer.getPlayer1RightKey());
             this.playerPojo.setPlayer2LeftKey(newPLayer.getPlayer2LeftKey());
             this.playerPojo.setPlayer2RightKey(newPLayer.getPlayer2RightKey());
-        }
-        if ((playerPojo.getPlayer1StartGame() && playerPojo.getPlayer2StartGame()) && !ballIsMoving) {
-            startBall();
-            ballModel.initCollision();
-            ballIsMoving = true;
+            this.playerPojo.setBallPojo(newPLayer.getBallPojo());
+            this.playerPojo.setPlayer1Score(newPLayer.getPlayer1Score());
+            this.playerPojo.setPlayer2Score(newPLayer.getPlayer2Score());
         }
     }
 
@@ -86,8 +79,8 @@ public class ManagerModelClient implements ContractPlay.ModelClient {
     public void updateCountPoints() {
         Thread thread = new Thread(() -> {
             while (true) {
-                int player1Points = ballModel.getPlayer1Points();
-                int player2Points = ballModel.getPlayer2Points();
+                int player1Points = playerPojo.getPlayer1Score();
+                int player2Points = playerPojo.getPlayer2Score();
                 presenter.updatePlayer1Points(player1Points);
                 presenter.updatePlayer2Points(player2Points);
             }
@@ -98,4 +91,5 @@ public class ManagerModelClient implements ContractPlay.ModelClient {
     public void setBallIsMoving(boolean ballIsMoving) {
         this.ballIsMoving = ballIsMoving;
     }
+
 }
