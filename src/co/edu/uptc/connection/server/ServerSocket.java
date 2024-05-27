@@ -102,7 +102,9 @@ public class ServerSocket implements ContractPlay.Server {
         ballPojo.setDirection(DirectionEnum.RIGHT);
         ballPojo.setPoint(new Point(20, 0));
         ballPojo.setSize(20);
+        ballPojo.setDy(2);
         playerPojo.setBallPojo(ballPojo);
+        
     }
 
     private RacketPojo assignRacket1(PlayerPojo playerPojo) {
@@ -161,11 +163,35 @@ public class ServerSocket implements ContractPlay.Server {
     }
 
     public void moveBallPojo(BallPojo ballPojo) {
+        int cordX = ballPojo.getPoint().x;
+        int cordY = ballPojo.getPoint().y;
+
         if (ballPojo.getDirection() == DirectionEnum.LEFT) {
-            leftBallPojo(ballPojo);
+            cordX -= ballPojo.getSpeed();
+        } else if (ballPojo.getDirection() == DirectionEnum.RIGHT) {
+            cordX += ballPojo.getSpeed();
         }
-        if (ballPojo.getDirection() == DirectionEnum.RIGHT) {
-            rightBallPojo(ballPojo);
+
+        cordY += ballPojo.getDy();
+
+        if (cordY <= 0 || cordY >= 600 - ballPojo.getSize()) {
+            ballPojo.setDy(-ballPojo.getDy());  
+        }
+
+        ballPojo.setPoint(new Point(cordX, cordY));
+
+        
+        if (cordX <= 0) {
+            //Nose
+            playerPojo.setPlayer2Score(playerPojo.getPlayer2Score() + 1);
+            ballPojo.setDirection(DirectionEnum.RIGHT);
+            ballPojo.setPoint(new Point(20, 0));
+            playerPojo.setPlayer2StartGame(false);
+        } else if (cordX >= playerPojo.getTotalPlayers() * 500) {
+            playerPojo.setPlayer1Score(playerPojo.getPlayer1Score() + 1);
+            ballPojo.setDirection(DirectionEnum.LEFT);
+            ballPojo.setPoint(new Point(20, 0));
+            playerPojo.setPlayer1StartGame(false);
         }
     }
 

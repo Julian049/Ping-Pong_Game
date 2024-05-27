@@ -8,9 +8,17 @@ import java.io.Serializable;
 public class BallPojo implements Serializable {
     private Point point;
     private int size;
-    private int angle;
     private DirectionEnum direction;
     private int speed;
+    private int dy;  
+
+    public int getDy() {
+        return dy;
+    }
+
+    public void setDy(int dy) {
+        this.dy = dy;
+    }
 
     public int getSpeed() {
         return speed;
@@ -44,20 +52,5 @@ public class BallPojo implements Serializable {
         this.size = size;
     }
 
-    public int getAngle() {
-        return angle;
-    }
 
-    public void setAngle(int angle) {
-        this.angle = angle;
-    }
-
-    @Override
-    public String toString() {
-        return "point=" + point +
-                ", size=" + size +
-                ", angle=" + angle +
-                ", direction=" + direction +
-                ", speed=" + speed + "\n";
-    }
 }
