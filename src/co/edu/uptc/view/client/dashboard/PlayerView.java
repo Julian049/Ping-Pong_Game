@@ -92,7 +92,7 @@ public class PlayerView extends JPanel {
     }
 
     private void paintBall(Graphics g) {
-        g.setColor(Color.GREEN);
+        g.setColor(ViewPropertiesUtil.BALL_COLOR);
         g.fillOval(ballPojo.getPoint().x, ballPojo.getPoint().y, ballPojo.getSize(), ballPojo.getSize());
     }
 

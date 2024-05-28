@@ -44,11 +44,12 @@ public class ViewPropertiesUtil {
     public static String NOTE = propertiesText.getProperty("note");
     public static String START_BUTTON = propertiesText.getProperty("startButton");
     public static String SETTINGS_BUTTON = propertiesText.getProperty("settingsButton");
-    public static Color TEXT_COLOR = new Color(35, 33, 60);
+    public static Color TEXT_COLOR = new Color(131,127,183);
     public static Color TEXT_COLOR2 = new Color(0,0,0);
     public static String BACK_BUTTON = propertiesText.getProperty("backButton");
     public static int PAINT_SPEED_THREAD = Integer.parseInt(propertiesConfig.getProperty("paintSpeedThread"));
-    public static Color TABLE_COLOR = new Color(0, 0, 255);
+    public static Color TABLE_COLOR = new Color(0, 166, 81);
+    public static Color BALL_COLOR = new Color(232,184,18);
     public static String PLAYER_1_INITIAL_TEXT = propertiesText.getProperty("player1InitialText");
     public static String PLAYER_2_INITIAL_TEXT = propertiesText.getProperty("player2InitialText");
     public static String PLAYER_1_POINTS_TEXT = propertiesText.getProperty("player1PointsText");

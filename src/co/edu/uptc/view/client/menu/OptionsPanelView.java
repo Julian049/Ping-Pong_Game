@@ -80,8 +80,10 @@ public class OptionsPanelView extends JPanel implements Serializable {
     private void createUpKeyTextArea() {
         selectUpKeyTextArea = new JTextArea(ViewPropertiesUtil.CLICK_TO_SET_A_KEY);
         selectUpKeyTextArea.setForeground(ViewPropertiesUtil.TEXT_COLOR2);
-        selectUpKeyTextArea.setBackground(new Color(0, 0, 0, 0));
-        selectUpKeyTextArea.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10));
+        selectUpKeyTextArea.setBackground(ViewPropertiesUtil.TEXT_COLOR);
+        Font font = ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10);
+        selectUpKeyTextArea.setFont(font);
+        selectUpKeyTextArea.setMargin(new Insets(5, 5, 5, 5));
         selectUpKeyTextArea.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -90,24 +92,21 @@ public class OptionsPanelView extends JPanel implements Serializable {
                     @Override
                     public void keyTyped(KeyEvent e) {
                         upKey = Character.toUpperCase(e.getKeyChar());
-                        selectUpKeyTextArea.setText(ViewPropertiesUtil.KEY_SELECTED + upKey);
+                        selectUpKeyTextArea.setText(ViewPropertiesUtil.KEY_SELECTED + e.getKeyChar());
                     }
 
                     @Override
-                    public void keyPressed(KeyEvent e) {
-
-                    }
+                    public void keyPressed(KeyEvent e) {}
 
                     @Override
-                    public void keyReleased(KeyEvent e) {
-
-                    }
+                    public void keyReleased(KeyEvent e) {}
                 });
             }
         });
         selectUpKeyTextArea.setEditable(false);
         selectUpKeyTextArea.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
+
 
     private void createDownKeyLabel() {
         selectDownKeyLabel = new JLabel(ViewPropertiesUtil.MOVE_DOWN);
@@ -118,9 +117,10 @@ public class OptionsPanelView extends JPanel implements Serializable {
     private void createDownKeyTextArea() {
         selectDownKeyTextArea = new JTextArea(ViewPropertiesUtil.CLICK_TO_SET_A_KEY);
         selectDownKeyTextArea.setForeground(ViewPropertiesUtil.TEXT_COLOR2);
-        selectDownKeyTextArea.setBackground(new Color(0, 0, 0, 0));
-        selectDownKeyTextArea.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10));
-        selectDownKeyTextArea.addMouseListener(new MouseAdapter() {
+        selectDownKeyTextArea.setBackground(ViewPropertiesUtil.TEXT_COLOR);
+        Font font = ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10);
+        selectDownKeyTextArea.setFont(font);
+        selectDownKeyTextArea.setMargin(new Insets(5, 5, 5, 5));         selectDownKeyTextArea.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 selectDownKeyTextArea.setText(ViewPropertiesUtil.PRESS_A_KEY);
@@ -128,7 +128,7 @@ public class OptionsPanelView extends JPanel implements Serializable {
                     @Override
                     public void keyTyped(KeyEvent e) {
                         downKey = Character.toUpperCase(e.getKeyChar());
-                        selectDownKeyTextArea.setText(ViewPropertiesUtil.KEY_SELECTED + downKey);
+                        selectDownKeyTextArea.setText(ViewPropertiesUtil.KEY_SELECTED + e.getKeyChar());
                     }
 
                     @Override
@@ -156,9 +156,10 @@ public class OptionsPanelView extends JPanel implements Serializable {
     private void createThrowBallKeyTextArea() {
         selectThrowBallTextArea = new JTextArea(ViewPropertiesUtil.CLICK_TO_SET_A_KEY);
         selectThrowBallTextArea.setForeground(ViewPropertiesUtil.TEXT_COLOR2);
-        selectThrowBallTextArea.setBackground(new Color(0, 0, 0, 0));
-        selectThrowBallTextArea.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10));
-        selectThrowBallTextArea.addMouseListener(new MouseAdapter() {
+        selectThrowBallTextArea.setBackground(ViewPropertiesUtil.TEXT_COLOR);
+        Font font = ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10);
+        selectThrowBallTextArea.setFont(font);
+        selectThrowBallTextArea.setMargin(new Insets(5, 5, 5, 5));          selectThrowBallTextArea.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 selectThrowBallTextArea.setText(ViewPropertiesUtil.PRESS_A_KEY);
@@ -166,7 +167,7 @@ public class OptionsPanelView extends JPanel implements Serializable {
                     @Override
                     public void keyTyped(KeyEvent e) {
                         throwKey = Character.toUpperCase(e.getKeyChar());
-                        selectThrowBallTextArea.setText(ViewPropertiesUtil.KEY_SELECTED + throwKey);
+                        selectThrowBallTextArea.setText(ViewPropertiesUtil.KEY_SELECTED + e.getKeyChar());
                     }
 
                     @Override
