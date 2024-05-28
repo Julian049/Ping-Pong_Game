@@ -23,7 +23,6 @@ public class ModelPropertiesUtil {
     public static int RACKETS_WIDTH =Integer.parseInt(properties.getProperty("racketsWidth"));
     public static int RACKETS_SPEED =Integer.parseInt(properties.getProperty("racketsSpeed"));
     public static int SPACE_BETWEEN =Integer.parseInt(properties.getProperty("spaceBetween"));
-    public static int SPACE_BETWEEN_BALL =Integer.parseInt(properties.getProperty("spaceBetweenBall"));
     public static int PLAYER_WIDTH =Integer.parseInt(properties.getProperty("playerWidth"));
     public static int GENERAL_KEY_CODE =Integer.parseInt(properties.getProperty("generalKeyCode"));
     public static int BALL_X =Integer.parseInt(properties.getProperty("ballPointX"));

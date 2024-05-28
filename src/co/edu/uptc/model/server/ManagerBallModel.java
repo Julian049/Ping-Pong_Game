@@ -49,13 +49,16 @@ public class ManagerBallModel {
         if (cordX <= 0) {
             managerModelServer.getPlayerPojo().setPlayer2Score(managerModelServer.getPlayerPojo().getPlayer2Score() + 1);
             ballPojo.setDirection(DirectionEnum.RIGHT);
-            ballPojo.setPoint(new Point(((managerModelServer.getPlayerPojo().getTotalPlayers() * ModelPropertiesUtil.PLAYER_WIDTH)-ModelPropertiesUtil.SPACE_BETWEEN_BALL), cordY));
-            managerModelServer.getPlayerPojo().getRacketPojo2().setPoint(new Point((managerModelServer.getPlayerPojo().getTotalPlayers() * ModelPropertiesUtil.PLAYER_WIDTH) - ModelPropertiesUtil.SPACE_BETWEEN, (cordY-20)));
+            int spaceBetweenBall = ballPojo.getSize() + managerModelServer.getPlayerPojo().getRacketPojo1().getWidth() + ModelPropertiesUtil.SPACE_BETWEEN;
+            ballPojo.setPoint(new Point(((managerModelServer.getPlayerPojo().getTotalPlayers() * ModelPropertiesUtil.PLAYER_WIDTH)-spaceBetweenBall), cordY));
+            int spaceBetweenRacket = managerModelServer.getPlayerPojo().getRacketPojo1().getWidth() + ModelPropertiesUtil.SPACE_BETWEEN;
+            managerModelServer.getPlayerPojo().getRacketPojo2().setPoint(new Point((managerModelServer.getPlayerPojo().getTotalPlayers() * ModelPropertiesUtil.PLAYER_WIDTH) - spaceBetweenRacket, (cordY-20)));
             managerModelServer.getPlayerPojo().setPlayer2StartGame(false);
         } else if (cordX >= managerModelServer.getPlayerPojo().getTotalPlayers() * ModelPropertiesUtil.PLAYER_WIDTH) {
             managerModelServer.getPlayerPojo().setPlayer1Score(managerModelServer.getPlayerPojo().getPlayer1Score() + 1);
             ballPojo.setDirection(DirectionEnum.LEFT);
-            ballPojo.setPoint(new Point(ModelPropertiesUtil.SPACE_BETWEEN, cordY));
+            int spaceBetweenRacket = managerModelServer.getPlayerPojo().getRacketPojo2().getWidth() + ModelPropertiesUtil.SPACE_BETWEEN;
+            ballPojo.setPoint(new Point(spaceBetweenRacket, cordY));
             managerModelServer.getPlayerPojo().getRacketPojo1().setPoint(new Point(ModelPropertiesUtil.RACKET1X, (cordY-20)));
             managerModelServer.getPlayerPojo().setPlayer1StartGame(false);
         }

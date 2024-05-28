@@ -190,7 +190,6 @@ public class OptionsPanelView extends JPanel implements Serializable {
         noteLabel.setForeground(ViewPropertiesUtil.TEXT_COLOR2);
         noteLabel.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 7));
         noteLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        //tempnose
     }
 
     private void createBackButton() {

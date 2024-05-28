@@ -93,8 +93,6 @@ public class ServerSocketGame implements ContractPlay.Server {
         playerPojo = new PlayerPojo();
         playerPojo.setNumberPlayer(numberPlayers);
         playerPojo.setTotalPlayers(numberPlayers + 1);
-        playerPojo.setRacketPojo1(assignRacket1(playerPojo));
-        playerPojo.setRacketPojo2(assignRacket2(playerPojo));
         BallPojo ballPojo = new BallPojo();
         ballPojo.setSpeed(ModelPropertiesUtil.BALL_DX);
         ballPojo.setDirection(DirectionEnum.RIGHT);
@@ -102,7 +100,8 @@ public class ServerSocketGame implements ContractPlay.Server {
         ballPojo.setSize(ModelPropertiesUtil.BALL_SIZE);
         ballPojo.setDy(ModelPropertiesUtil.BALL_DY);
         playerPojo.setBallPojo(ballPojo);
-
+        playerPojo.setRacketPojo1(assignRacket1(playerPojo));
+        playerPojo.setRacketPojo2(assignRacket2(playerPojo));
     }
 
     private RacketPojo assignRacket1(PlayerPojo playerPojo) {
@@ -116,13 +115,13 @@ public class ServerSocketGame implements ContractPlay.Server {
 
     private RacketPojo assignRacket2(PlayerPojo playerPojo) {
         RacketPojo racket = new RacketPojo();
-        int x = (playerPojo.getTotalPlayers() * ModelPropertiesUtil.PLAYER_WIDTH) - ModelPropertiesUtil.SPACE_BETWEEN;
-        int y = ModelPropertiesUtil.RACKETS_Y;
-        racket.setPoint(new Point(x, y));
         racket.setHeight(ModelPropertiesUtil.RACKETS_HEIGHT);
         racket.setWidth(ModelPropertiesUtil.RACKETS_WIDTH);
         racket.setSpeed(ModelPropertiesUtil.RACKETS_SPEED);
-
+        int spaceBetweenRacket = racket.getWidth() + ModelPropertiesUtil.SPACE_BETWEEN;
+        int x = (playerPojo.getTotalPlayers() * ModelPropertiesUtil.PLAYER_WIDTH) - spaceBetweenRacket;
+        int y = ModelPropertiesUtil.RACKETS_Y;
+        racket.setPoint(new Point(x, y));
         return racket;
     }
 
