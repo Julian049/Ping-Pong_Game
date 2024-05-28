@@ -39,6 +39,17 @@ El programa cuenta con 3 archivos de configuración `ModelConfig.properties`,`Te
 
 A continuación se listan algunas propiedades importantes de configuración.
 
+ En `ModelConfig.properties`:
+
+ - `port`: Guarda el puerto donde se establecerá la conexion de servidor.
+ - `host`: Guarda la dirección IP del servidor.
+- `racketsHeight`: Altura de la raqueta.
+- `racketsWidth`: Ancho de la raqueta.
+- `racketsSpeed`: Velocidad de movimiento de la raqueta.
+- `ballSize`: Tamaño de la pelota.
+- `ballDx`: Velocidad en el eje x de la pelota.
+- `ballDy`: Velocidad en el eje y de la pelota.
+
 
 
 
@@ -114,11 +125,11 @@ Cuando se abra la ventana para empezar el juego encontrará dos botones: *START*
 
 Nota: El juego solo iniciara cuando haya por lo menos dos jugadores, en caso de que un tercero ingrese al juego este ingresara como jugador dos, por lo que el que anteriormente era jugador dos ahora actuara como espectador.
 
+------
 
-- **EJECUCIÓN EN INTELLIJ IDEA**:
 
+*Las condiciones de ejecución pueden variar si se desea ejecutar el proyecto en un entorno de desarrollo diferente al anteriormente especificado.*
 
-Nota: Las condiciones de ejecución pueden variar si se desea ejecutar el proyecto en entornos de desarrollo diferentes a los anteriormente especificados.
 
 
 
