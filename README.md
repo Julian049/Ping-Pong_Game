@@ -81,7 +81,6 @@ A continuación se listan algunas propiedades importantes de configuración.
 - Para configurar la IP y el puerto para la conexion debe abrir el proyecto, ingresar en la carpeta *src* y ubicar el archivo `ModelConfig.properties`, a continuación encontrara las dos siguientes propiedades listadas de primero: *port* y *host*, modifique los valores segun el puerto que desee usar y la IP del equipo que actuará como servidor. Este paso lo deben realizar todas las maquinas que deseen ingresar al juego teniendo en cuenta que los valores de IP y puerto deben ser los mismos del servidor.
 
 
-A continuación se describen alternativas para la ejecución del proyecto dependiendo del entorno de desarrollo que desee usar.
 
 - **EJECUCIÓN EN VISUAL STUDIO CODE**: 
 
