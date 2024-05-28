@@ -39,11 +39,6 @@ public class ManagerModelClient implements ContractPlay.ModelClient {
     }
 
     @Override
-    public void startBall() {
-        //ballModel.startBall();
-    }
-
-    @Override
     public BallPojo getBallPojo() {
         return playerPojo.getBallPojo();
     }

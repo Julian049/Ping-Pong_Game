@@ -58,11 +58,6 @@ public class ManagerPresenterClient implements ContractPlay.PresenterClient {
     }
 
     @Override
-    public void startBall() {
-        model.startBall();
-    }
-
-    @Override
     public void updatePlayers(PlayerPojo newPLayer) {
         model.updatePLayer(newPLayer);
         view.setPlayerPojo(model.getPlayerPojo());

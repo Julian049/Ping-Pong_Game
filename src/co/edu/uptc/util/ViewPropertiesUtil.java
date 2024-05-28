@@ -48,4 +48,9 @@ public class ViewPropertiesUtil {
     public static Color TEXT_COLOR2 = new Color(0,0,0);
     public static String BACK_BUTTON = propertiesText.getProperty("backButton");
     public static int PAINT_SPEED_THREAD = Integer.parseInt(propertiesConfig.getProperty("paintSpeedThread"));
+    public static Color TABLE_COLOR = new Color(0, 0, 255);
+    public static String PLAYER_1_INITIAL_TEXT = propertiesText.getProperty("player1InitialText");
+    public static String PLAYER_2_INITIAL_TEXT = propertiesText.getProperty("player2InitialText");
+    public static String PLAYER_1_POINTS_TEXT = propertiesText.getProperty("player1PointsText");
+    public static String PLAYER_2_POINTS_TEXT = propertiesText.getProperty("player2PointsText");
 }

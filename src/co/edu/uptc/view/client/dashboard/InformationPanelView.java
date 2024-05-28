@@ -27,7 +27,7 @@ public class InformationPanelView extends JPanel {
     }
 
     private void createLabelPointsPlayer1(GridBagConstraints gbc) {
-        player1PointsLabel = new JLabel("Player 1: 0");
+        player1PointsLabel = new JLabel(ViewPropertiesUtil.PLAYER_1_INITIAL_TEXT);
         player1PointsLabel.setForeground(Color.WHITE);
         player1PointsLabel.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10));
         gbc.gridx = 0;
@@ -36,7 +36,7 @@ public class InformationPanelView extends JPanel {
     }
 
     private void createLabelPointsPlayer2(GridBagConstraints gbc) {
-        player2PointsLabel = new JLabel("Player 2: 0");
+        player2PointsLabel = new JLabel(ViewPropertiesUtil.PLAYER_2_INITIAL_TEXT);
         player2PointsLabel.setForeground(Color.WHITE);
         player2PointsLabel.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 10));
         gbc.gridx = 1;

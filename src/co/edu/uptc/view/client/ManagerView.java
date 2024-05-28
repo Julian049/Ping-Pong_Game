@@ -3,6 +3,7 @@ package co.edu.uptc.view.client;
 import co.edu.uptc.pojo.BallPojo;
 import co.edu.uptc.pojo.PlayerPojo;
 import co.edu.uptc.presenter.ContractPlay;
+import co.edu.uptc.util.ModelPropertiesUtil;
 import co.edu.uptc.util.ViewPropertiesUtil;
 import co.edu.uptc.view.client.dashboard.ManagerPlayerView;
 import co.edu.uptc.view.client.menu.MenuView;
@@ -65,18 +66,18 @@ public class ManagerView extends JFrame implements ContractPlay.View {
     }
 
     public int getTotalFrameSize(){
-        int totalPlayers = playerPojo.getTotalPlayers() * 500;
+        int totalPlayers = playerPojo.getTotalPlayers() * ModelPropertiesUtil.PLAYER_WIDTH;
         return (totalPlayers);
     }
 
     @Override
     public void updatePlayer1Points(int player1Points) {
-        managePlayerView.player1PointsLabel().setText("Player 1: " + player1Points);
+        managePlayerView.player1PointsLabel().setText(ViewPropertiesUtil.PLAYER_1_POINTS_TEXT + player1Points);
     }
 
     @Override
     public void updatePlayer2Points(int player2Points) {
-        managePlayerView.player2PointsLabel().setText("Player 2: " + player2Points);
+        managePlayerView.player2PointsLabel().setText(ViewPropertiesUtil.PLAYER_2_POINTS_TEXT + player2Points);
     }
 
     public PlayerPojo getPlayerPojo() {

@@ -16,10 +16,9 @@ public interface ContractPlay {
         void setPresenter(PresenterClient presenter);
         void sendKey(int keyCode, int numberPLayer, int totalPlayers);
         void run();
-        void startBall();
         BallPojo getBallPojo();
         void updatePLayer(PlayerPojo newPLayer);
-        public PlayerPojo getPlayerPojo();
+        PlayerPojo getPlayerPojo();
         void updateCountPoints();
         void playerSetKeys(int numberOfPlayer,int totalPlayers,int down, int up,int throwBall);
     }
@@ -47,7 +46,6 @@ public interface ContractPlay {
         void startClient();
         void updatePlayers(PlayerPojo playerPojo);
         void sendKey(int keyCode);
-        void startBall();
         BallPojo getBallPojo();
         RacketPojo getRacketPojo1();
         RacketPojo getRacketPojo2();

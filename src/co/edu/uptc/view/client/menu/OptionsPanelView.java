@@ -41,7 +41,6 @@ public class OptionsPanelView extends JPanel implements Serializable {
         ImageIcon image = new ImageIcon(ViewPropertiesUtil.BACKGROUND_IMAGE);
         image = new ImageIcon(image.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH));
         g.drawImage(image.getImage(), 0, 0, this);
-        g.setColor(new Color(0,0,0,10));
         g.fillRect(0,0,this.getWidth(),this.getHeight());
     }
 
@@ -191,6 +190,7 @@ public class OptionsPanelView extends JPanel implements Serializable {
         noteLabel.setForeground(ViewPropertiesUtil.TEXT_COLOR2);
         noteLabel.setFont(ViewPropertiesUtil.getMyFont().deriveFont(Font.PLAIN, 7));
         noteLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        //tempnose
     }
 
     private void createBackButton() {
@@ -202,10 +202,10 @@ public class OptionsPanelView extends JPanel implements Serializable {
         backButton.setBorderPainted(false);
         backButton.addActionListener(e -> {
             if (downKey == 0 || upKey == 0 || throwKey == 0){
-                JOptionPane.showMessageDialog(null, "Select a key","ERROR", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, ViewPropertiesUtil.ANY_KEY_SELECTED_ERROR, ViewPropertiesUtil.ERROR_TITLE, JOptionPane.ERROR_MESSAGE);
             }else {
                 managerView.backToMenu();
-                managerView.presenter.sendPlayerKeys(downKey,upKey,throwKey);
+                managerView.presenter.sendPlayerKeys(upKey,downKey,throwKey);
             }
         });
     }
