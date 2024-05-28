@@ -98,44 +98,44 @@ public class ServerSocketGame implements ContractPlay.Server {
             playerPojo.setRacketPojo1(assignRacket1(playerPojo));
             playerPojo.setRacketPojo2(assignRacket2(playerPojo));
             BallPojo ballPojo = new BallPojo();
-            ballPojo.setSpeed(2);
+            ballPojo.setSpeed(ModelPropertiesUtil.BALLDX);
             ballPojo.setDirection(DirectionEnum.RIGHT);
-            ballPojo.setPoint(new Point(20, 0));
-            ballPojo.setSize(20);
-            ballPojo.setDy(2);
+            ballPojo.setPoint(new Point(ModelPropertiesUtil.BALLX, ModelPropertiesUtil.BALLY));
+            ballPojo.setSize(ModelPropertiesUtil.BALLSIZE);
+            ballPojo.setDy(ModelPropertiesUtil.BALLDY);
             playerPojo.setBallPojo(ballPojo);
 
         }
 
         private RacketPojo assignRacket1 (PlayerPojo playerPojo){
             RacketPojo racket = new RacketPojo();
-            racket.setPoint(new Point(10, 0));
-            racket.setHeight(60);
-            racket.setWidth(20);
-            racket.setSpeed(5);
+            racket.setPoint(new Point(ModelPropertiesUtil.RACKET1X, ModelPropertiesUtil.RACKETSY));
+            racket.setHeight(ModelPropertiesUtil.RACKETSHEIGHT);
+            racket.setWidth(ModelPropertiesUtil.RACKETSWIDTH);
+            racket.setSpeed(ModelPropertiesUtil.RACKETSSPEED);
             return racket;
         }
 
         private RacketPojo assignRacket2 (PlayerPojo playerPojo){
             RacketPojo racket = new RacketPojo();
-            int x = (playerPojo.getTotalPlayers() * 500) - 30;
-            int y = 0;
+            int x = (playerPojo.getTotalPlayers() * ModelPropertiesUtil.TOTALWIDTH) - ModelPropertiesUtil.SPACEBETWEEN;
+            int y = ModelPropertiesUtil.RACKETSY;
             racket.setPoint(new Point(x, y));
-            racket.setHeight(60);
-            racket.setWidth(20);
-            racket.setSpeed(5);
+            racket.setHeight(ModelPropertiesUtil.RACKETSHEIGHT);
+            racket.setWidth(ModelPropertiesUtil.RACKETSWIDTH);
+            racket.setSpeed(ModelPropertiesUtil.RACKETSSPEED);
 
             return racket;
         }
 
         public void player1StartGame ( int keyCode){
-            if (keyCode == 16 || keyCode == playerPojo.getPlayer1ThrowBallKey()) {
+            if (keyCode == ModelPropertiesUtil.GENERALKEYCODE || keyCode == playerPojo.getPlayer1ThrowBallKey()) {
                 playerPojo.setPlayer1StartGame(true);
             }
         }
 
         public void player2StartGame ( int keyCode){
-            if (keyCode == 16 || keyCode == playerPojo.getPlayer2ThrowBallKey()) {
+            if (keyCode == ModelPropertiesUtil.GENERALKEYCODE || keyCode == playerPojo.getPlayer2ThrowBallKey()) {
                 playerPojo.setPlayer2StartGame(true);
             }
         }
