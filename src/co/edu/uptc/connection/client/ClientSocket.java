@@ -25,7 +25,6 @@ public class ClientSocket implements ContractPlay.Client {
     public void initClient() {
         try {
             socket = new Socket(ModelPropertiesUtil.HOST, ModelPropertiesUtil.PORT);
-            System.out.println("Cliente conectado");
             objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
             objectInputStream = new ObjectInputStream(socket.getInputStream());
             listenClient();

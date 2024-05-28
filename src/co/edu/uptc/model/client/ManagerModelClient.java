@@ -53,7 +53,6 @@ public class ManagerModelClient implements ContractPlay.ModelClient {
         if (!firstUpdate) {
             this.playerPojo = newPLayer;
             firstUpdate = true;
-            System.out.println("First update");
         } else {
             this.playerPojo.setRacketPojo1(newPLayer.getRacketPojo1());
             this.playerPojo.setRacketPojo2(newPLayer.getRacketPojo2());

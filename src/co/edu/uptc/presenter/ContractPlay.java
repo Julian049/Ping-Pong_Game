@@ -8,6 +8,8 @@ import co.edu.uptc.pojo.RacketPojo;
 public interface ContractPlay {
     interface ModelServer {
         void setPresenter(PresenterServer presenter);
+        void updatePlayerPojo(PlayerPojo playerPojo);
+        void initBall();
     }
 
     interface ModelClient {
@@ -35,6 +37,7 @@ public interface ContractPlay {
         void setModel(ModelServer model);
         void setServer(Server server);
         void startServer();
+        void updatePlayerPojo(PlayerPojo playerPojo);
     }
 
     interface PresenterClient{

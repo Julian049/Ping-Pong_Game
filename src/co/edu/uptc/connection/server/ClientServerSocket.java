@@ -10,7 +10,7 @@ import java.net.Socket;
 
 public class ClientServerSocket {
     private Socket socket;
-    private ServerSocket serverSocket;
+    private ServerSocketGame serverSocketGame;
     private ObjectInputStream objectInputStream;
     private ObjectOutputStream objectOutputStream;
 
@@ -37,20 +37,18 @@ public class ClientServerSocket {
                             int numberOfPLayer = info.getNumberPlayer();
                             int totalPlayers = info.getTotalPlayers();
                             if (code != 0) {
-                                if(numberOfPLayer == 1 ){
-                                    serverSocket.moveRacket1(code);
-                                    serverSocket.player1StartGame(code);
+                                if (numberOfPLayer == 1) {
+                                    serverSocketGame.moveRacket1(code);
+                                    serverSocketGame.player1StartGame(code);
                                 } else if (numberOfPLayer == totalPlayers) {
-                                    serverSocket.moveRacket2(code);
-                                    serverSocket.player2StartGame(code);
+                                    serverSocketGame.moveRacket2(code);
+                                    serverSocketGame.player2StartGame(code);
                                 }
-                            }else {
-                                if(numberOfPLayer == 1 ){
-                                    serverSocket.player1Keys(info.getDown(), info.getUp(), info.getThrowBall());
-                                    System.out.println("Player 1 keys" + info.getDown() + " " + info.getUp());
+                            } else {
+                                if (numberOfPLayer == 1) {
+                                    serverSocketGame.player1Keys(info.getDown(), info.getUp(), info.getThrowBall());
                                 } else if (numberOfPLayer == totalPlayers) {
-                                    serverSocket.player2Keys(info.getDown(), info.getUp(), info.getThrowBall());
-                                    System.out.println("Player 2 keys" + info.getDown() + " " + info.getUp());
+                                    serverSocketGame.player2Keys(info.getDown(), info.getUp(), info.getThrowBall());
                                 }
                             }
 
@@ -76,7 +74,7 @@ public class ClientServerSocket {
         }
     }
 
-    public void setServerSocket(ServerSocket serverSocket) {
-        this.serverSocket = serverSocket;
+    public void setServerSocket(ServerSocketGame serverSocketGame) {
+        this.serverSocketGame = serverSocketGame;
     }
 }
