@@ -9,9 +9,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.Serializable;
 
-public class OptionsPanelView extends JPanel implements Serializable {
+public class OptionsPanelView extends JPanel {
 
     private JLabel settingsLabel;
     private JLabel selectUpKeyLabel;

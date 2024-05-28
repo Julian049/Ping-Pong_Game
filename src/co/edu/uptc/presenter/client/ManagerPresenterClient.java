@@ -11,8 +11,6 @@ public class ManagerPresenterClient implements ContractPlay.PresenterClient {
 
     private ContractPlay.View view;
     private ContractPlay.ModelClient model;
-    private ContractPlay.Client client;
-
     @Override
     public void setModel(ContractPlay.ModelClient model) {
         this.model = model;
@@ -25,7 +23,6 @@ public class ManagerPresenterClient implements ContractPlay.PresenterClient {
 
     @Override
     public void setClient(ContractPlay.Client client) {
-        this.client = client;
     }
 
     @Override

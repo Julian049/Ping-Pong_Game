@@ -9,13 +9,11 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class ClientServerSocket {
-    private Socket socket;
     private ServerSocketGame serverSocketGame;
     private ObjectInputStream objectInputStream;
     private ObjectOutputStream objectOutputStream;
 
     public ClientServerSocket(Socket socket) {
-        this.socket = socket;
         try {
             objectInputStream = new ObjectInputStream(socket.getInputStream());
             objectOutputStream = new ObjectOutputStream(socket.getOutputStream());

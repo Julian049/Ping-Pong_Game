@@ -6,9 +6,8 @@ import co.edu.uptc.view.client.ManagerView;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.Serializable;
 
-public class ManagerPlayerView extends JFrame implements Serializable {
+public class ManagerPlayerView extends JFrame {
     private PlayerView playerView;
     private InformationPanelView informationPanelView;
 

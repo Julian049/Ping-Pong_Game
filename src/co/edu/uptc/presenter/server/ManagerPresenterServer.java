@@ -8,8 +8,6 @@ import co.edu.uptc.connection.server.ServerSocketGame;
 public class ManagerPresenterServer implements ContractPlay.PresenterServer {
 
     private ContractPlay.ModelServer model;
-    private ContractPlay.Server server;
-
     @Override
     public void setModel(ContractPlay.ModelServer model) {
         this.model = model;
@@ -17,7 +15,6 @@ public class ManagerPresenterServer implements ContractPlay.PresenterServer {
 
     @Override
     public void setServer(ContractPlay.Server server) {
-        this.server = server;
     }
 
     @Override

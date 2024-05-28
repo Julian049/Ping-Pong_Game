@@ -1,6 +1,5 @@
 package co.edu.uptc.model.server;
 
-import co.edu.uptc.pojo.BallPojo;
 import co.edu.uptc.pojo.PlayerPojo;
 import co.edu.uptc.presenter.ContractPlay;
 

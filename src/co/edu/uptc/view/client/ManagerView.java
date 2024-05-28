@@ -7,15 +7,12 @@ import co.edu.uptc.util.ModelPropertiesUtil;
 import co.edu.uptc.util.ViewPropertiesUtil;
 import co.edu.uptc.view.client.dashboard.ManagerPlayerView;
 import co.edu.uptc.view.client.menu.MenuView;
-import co.edu.uptc.view.client.menu.OptionsPanelView;
-
 import javax.swing.*;
 
 
 public class ManagerView extends JFrame implements ContractPlay.View {
     public ContractPlay.PresenterClient presenter;
     private MenuView menuView;
-    private OptionsPanelView optionsPanelView;
     private ManagerPlayerView managePlayerView;
     private PlayerPojo playerPojo;
     private BallPojo ballPojo;
@@ -25,21 +22,11 @@ public class ManagerView extends JFrame implements ContractPlay.View {
         this.presenter = presenter;
     }
 
-    public ManagerView() {
-        this.playerPojo = playerPojo;
-    }
 
     private ManagerView getInstance() {
         return this;
     }
 
-    private void initComponents() {
-
-    }
-
-    private void initGame() {
-
-    }
 
     @Override
     public void initMenu() {

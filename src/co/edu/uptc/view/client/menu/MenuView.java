@@ -6,9 +6,8 @@ import co.edu.uptc.view.client.ManagerView;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.Serializable;
 
-public class MenuView extends JFrame implements Serializable {
+public class MenuView extends JFrame {
 
     private JLabel titleGameLabel;
     private JButton startGameButton;

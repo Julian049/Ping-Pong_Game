@@ -12,8 +12,6 @@ public class ManagerModelClient implements ContractPlay.ModelClient {
     private ClientSocket clientSocket = new ClientSocket();
     private PlayerPojo playerPojo;
     private boolean firstUpdate = false;
-    private boolean ballIsMoving = false;
-
     @Override
     public void setPresenter(ContractPlay.PresenterClient presenter) {
         this.presenter = presenter;
@@ -85,7 +83,6 @@ public class ManagerModelClient implements ContractPlay.ModelClient {
     }
 
     public void setBallIsMoving(boolean ballIsMoving) {
-        this.ballIsMoving = ballIsMoving;
     }
 
 }
