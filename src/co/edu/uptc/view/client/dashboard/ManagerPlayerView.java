@@ -1,6 +1,7 @@
 package co.edu.uptc.view.client.dashboard;
 
 import co.edu.uptc.pojo.BallPojo;
+import co.edu.uptc.util.ModelPropertiesUtil;
 import co.edu.uptc.view.client.ManagerView;
 
 import javax.swing.*;
@@ -16,10 +17,11 @@ public class ManagerPlayerView extends JFrame implements Serializable {
     }
 
     private void initComponents(ManagerView managerView, BallPojo ballPojo) {
-        setSize(516, 720);
+        setSize(ModelPropertiesUtil.PLAYER_WIDTH+16, 720);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new GridBagLayout());
+        setResizable(false);
         initGame(managerView, ballPojo);
     }
 
