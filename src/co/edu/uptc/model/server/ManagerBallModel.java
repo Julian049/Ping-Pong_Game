@@ -46,6 +46,10 @@ public class ManagerBallModel {
         ballPojo.setPoint(new Point(cordX, cordY));
 
 
+        manageBallOverflowingSides(ballPojo, cordX, cordY);
+    }
+
+    private void manageBallOverflowingSides(BallPojo ballPojo, int cordX, int cordY){
         if (cordX <= 0) {
             managerModelServer.getPlayerPojo().setPlayer2Score(managerModelServer.getPlayerPojo().getPlayer2Score() + 1);
             ballPojo.setDirection(DirectionEnum.RIGHT);
